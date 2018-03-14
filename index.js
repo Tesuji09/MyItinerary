@@ -1,10 +1,9 @@
 
-function hideIntro() {
-	$('header').fadeOut(1200,complete)
-}
 
 function showApp() { 
- $('#hideIntro').click(hideIntro())
+ $('#hideIntro').click( () => {
+	$('.introduction').fadeOut(1200);
+});
 }
 
 $(showApp)   

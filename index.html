@@ -3,18 +3,19 @@
 <head>
 	<meta name ="viewport" content="width=device-width, initial-scale=1">
 	<title>Right now this is just to test the APIs</title>
+	<link rel='stylesheet' href='index.css'>
 </head>
 <body>
-	<main>
-		<header>
+		<header class='introduction'>
 			<h1>This is the header for the Itro page</h1>
 			<p> This is a tool used to search for any place and create an itinerary for your trip?</p>
-			<button type='button'>Try it out!</button>
+			<button id ="hideIntro" type="button">Try it out!</button>
 		</header>
-		<div id="cardContainer"></div>
-		<div id="mapContainer"></div>
-		<div id="searchContainer"></div>
-	</main>
+		<main class="flex-container">
+			<div class="cardContainer">place holder text</div>
+			<div class="mapContainer">place holder text</div>
+			<div class="searchContainer">Place holder text</div>
+		</main>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="index.js"></script>
 </body>

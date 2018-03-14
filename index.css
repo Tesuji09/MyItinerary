@@ -1,18 +1,35 @@
-#cardContainer {
-	display:inline-block;
-	width:33%;
+.flex-container{
+	display: flex;
+  	flex-direction: row;
+  	align-items: baseline;
+  	flex-wrap: nowrap;
+  	width: 100%;
+	border: dotted pink;
+}
+
+header {
+	position: absolute;
+	width:100%;
+	text-align: center;
+	border: dotted pink;
+}
+
+
+.cardContainer {
+	background-color: green;
+	width: 33.33%;
 	height:100px;
 }
 
-#mapContainer {
-	display:inline-block;
-	width:33%;
+.mapContainer {
+	background-color: blue;
+	width: 33.33%;
 	height:100px;
 }
 
-#searchContainer {
-	display:inline-block;
-	width:33%;
+.searchContainer {
+	background-color: pink;
+	width: 33.33%;
 	height:100px;
 }
 
