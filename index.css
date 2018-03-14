@@ -1,0 +1,18 @@
+#cardContainer {
+	display:inline-block;
+	width:33%;
+	height:100px;
+}
+
+#mapContainer {
+	display:inline-block;
+	width:33%;
+	height:100px;
+}
+
+#searchContainer {
+	display:inline-block;
+	width:33%;
+	height:100px;
+}
+
