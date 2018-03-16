@@ -7,16 +7,20 @@
 </head>
 <body>
 		<header class='introduction'>
-			<h1>This is the header for the Itro page</h1>
-			<p> This is a tool used to search for any place and create an itinerary for your trip?</p>
-			<button id ="hideIntro" type="button">Try it out!</button>
+			<div class='intro-flex'>
+				<h1>This is the header for the Itro page</h1>
+				<p> This is a tool used to search for any place and create an itinerary for your trip?</p>
+				<button id ="hideIntro" type="button">Try it out!</button>
+			</div>
 		</header>
 		<main class="flex-container">
 			<div class="cardContainer">place holder text</div>
-			<div class="mapContainer">place holder text</div>
+			<div id="map"></div>
 			<div class="searchContainer">Place holder text</div>
 		</main>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="index.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiaXqZk9Y14jYBALFPyT_qjC8tAErrisg&callback=initMap"
+    async defer></script>
 </body>
 </html>
