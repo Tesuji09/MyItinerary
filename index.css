@@ -10,7 +10,7 @@ header {
 	position: absolute;
 	width:100%;
 	height:800px;
-	background-color:(255,255,255);
+	background-color:rgba(0, 0, 255, 0.5);
 	text-align: center;
 	border: dotted pink;
 }
