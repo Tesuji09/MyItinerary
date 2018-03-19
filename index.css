@@ -33,3 +33,7 @@ header {
 	height:800px;
 }
 
+.card {
+	border: 2px solid black;
+}
+
