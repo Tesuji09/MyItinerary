@@ -16,20 +16,28 @@ function getFourSquareData(callback, searchQuery) {
 function getSearchQuery() {
 	$('.js-search').submit(event => {
 			event.preventDefault();
-			const searchForm = $(event.currentTarget).find(".js-query");
-			console.log(event.currentTarget)
+			const searchForm = $(event.target).find(".js-query");
 			let searchTerm = searchForm.val();
-			console.log(searchTerm)
 			getFourSquareData(showData, searchTerm);
 	});
 }
 
 function showData(data) {
 	console.log(data)
-	let results = data.response.venues.map(item => {
-		return `<li>${item.name}</li>`
-	});
-	$('#results ul').html(results);
+	const locations = data.response.venues.map(item => {
+		let locationLat = item.location.lat
+		let locationLng = item.location.lng
+		console.log(item.location.lng)
+		return {lat: locationLat, lng: locationLng};
+	})
+	addMarkers(locations);
+	renderSidebarResults(data.response.venues);
+	//initMap()
+}
+
+function renderSidebarResults (results) {
+	let html = results.map(result => `<li>${result.name}</li>`);
+	$('#results ul').html(html);
 }
 
 
@@ -47,27 +55,29 @@ function showData(data) {
 // 		return position.coords.longitude;
 // 	});
 // }
-MARKERS = [];
-
+let MARKERS = [];
+let map;
 function initMap() {
-        let map = new google.maps.Map(document.getElementById('map'), {
+         	map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 41.8781, lng: -87.6298 },
-          zoom: 11
+          zoom: 14,
         });
+}
+
+function addMarkers(locations) {
+					console.log(locations)
+					locations.forEach(latlng => {
+						console.log(latlng)
+	       	let marker = new google.maps.Marker({
+	        position: latlng});
+					marker.setMap(map); });
       }
 
-function addMarker(location) {
-        var marker = new google.maps.Marker({
-          position: location,
-          map: map
-        });
-        markers.push(marker);
-      }
 
 // This section handles cards
 function createCard() {
 	$('#create').click(event => {
-		
+
 		$('.cardContainer').append(`<div class="card">
 										<label>Location<input type="text" value="Name of location"></label>
 										<label>Address<input type="text" value="Address"></label>
@@ -86,7 +96,7 @@ function deleteCard() {
 }
 // Begin app
 
-function showApp() { 
+function showApp() {
 	$('#hideIntro').click( () => {
 	$('.introduction').fadeOut(100);
 	getSearchQuery();
@@ -94,4 +104,4 @@ function showApp() {
 });
 }
 
-$(showApp())   
+$(showApp())
