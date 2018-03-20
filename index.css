@@ -1,5 +1,6 @@
 .flex-container{
 	display: flex;
+	overflow:hidden;
   	flex-direction: row;
   	flex-wrap: nowrap;
   	width: 100%;
@@ -8,6 +9,7 @@
 
 header {
 	z-index: 1;
+	display: none;
 	position: absolute;
 	width:100%;
 	height:800px;
@@ -18,8 +20,14 @@ header {
 
 .cardContainer {
 	background-color: green;
-	width: 15%;
-	height:800px;
+	width: 25%;
+	max-height:100%;
+	overflow: scroll;
+}
+
+.result {
+	border: solid black 2px;
+	background: lightgrey;
 }
 
 #map {
@@ -28,11 +36,20 @@ header {
 }
 
 .searchContainer {
+
 	background-color: pink;
-	width: 15%;
+	width: 25%;
 	height:800px;
+	overflow: scroll;
 }
 
 .card {
 	border: 2px solid black;
+}
+
+.notes {
+	display: block;
+	margin: 0 auto;
+	width: 90%;
+	height: 50px;
 }

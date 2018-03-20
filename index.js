@@ -8,7 +8,7 @@ function getFourSquareData(callback, searchQuery) {
 	    ll: '41.8781,-87.6298',
 	    query: `${searchQuery}`,
 	    v: '20170801',
-	    limit: 5
+	    limit: 20
 	};
 	$.getJSON(FOURSQUARE_URL, query, callback);
 }
@@ -36,8 +36,13 @@ function showData(data) {
 }
 
 function renderSidebarResults (results) {
-	let html = results.map(result => `<li>${result.name}</li>`);
-	$('#results ul').html(html);
+	let html = results.map(result =>
+												`<div class="result">
+													<p>${result.name}</p>
+													<p>${result.contact.formattedPhone}</p>
+													<p>${result.location.address} ${result.location.city}, ${result.location.state} ${result.location.postalCode}</p>
+												<div>`);
+	$('#js-searchResults').html(html);
 }
 
 
@@ -79,9 +84,11 @@ function createCard() {
 	$('#create').click(event => {
 
 		$('.cardContainer').append(`<div class="card">
-										<label>Location<input type="text" value="Name of location"></label>
-										<label>Address<input type="text" value="Address"></label>
-										<textarea rows="4" cols="30"></textarea>
+										<input type="text" placeholder="Location"><br>
+										<input type="text" placeholder="Address"><br>
+										<label>Start: <input type="time"></label><br>
+										<label>End: <input type="time"></label>
+										<textarea class='notes'></textarea><br>
 										<input type="button" value="Remove Card" class="delete">
 									</div>`);
 		deleteCard();
@@ -99,9 +106,9 @@ function deleteCard() {
 function showApp() {
 	$('#hideIntro').click( () => {
 	$('.introduction').fadeOut(100);
-	getSearchQuery();
-	createCard();
 });
+getSearchQuery();
+createCard()
 }
 
 $(showApp())
