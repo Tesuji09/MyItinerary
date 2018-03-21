@@ -35,19 +35,47 @@ function showData(data) {
 	//initMap()
 }
 
+
+// This section will be for handling sidebar manipulation
 function renderSidebarResults (results) {
 	let html = results.map(result =>
 												`<div class="result">
-													<p>${result.name}</p>
+													<p class="resultName">${result.name}</p>
 													<p>${result.contact.formattedPhone}</p>
-													<p>${result.location.address} ${result.location.city}, ${result.location.state} ${result.location.postalCode}</p>
+													<p class="resultAddress">${result.location.address} ${result.location.city}, ${result.location.state} ${result.location.postalCode}</p>
 												<div>`);
 	$('#js-searchResults').html(html);
+	appendSideBarResults();
 }
 
+function appendSideBarResults(name, address) {
+	$('.result').click(event => {
+		event.stopPropagation();
+		console.log($(event.target).find(".resultAddress").text());
+		addResultAddress();
+		addResultName();
+	});
+}
+
+function addResultAddress() {
+	if($(event.target)===$('.result')){
+		$('.selected .address').val($(event.target).find(".resultAddress").text())
+	}
+	else {
+		$('.selected .address').val($(event.target).parent().find(".resultAddress").text())
+	}
+}
+
+function addResultName() {
+	if($(event.target)===$('.result')){
+		$('.selected .location').val($(event.target).find(".resultName").text())
+	}
+	else {
+		$('.selected .location').val($(event.target).parent().find(".resultName").text())
+	}
+}
 
 // This section will be for handling the map
-
 
 // function getLat() {
 // 	navigator.geolocation.getCurrentPosition(position => {
@@ -80,18 +108,23 @@ function addMarkers(locations) {
 
 
 // This section handles cards
+
 function createCard() {
 	$('#create').click(event => {
 
-		$('.cardContainer').append(`<div class="card">
-										<input type="text" placeholder="Location"><br>
-										<input type="text" placeholder="Address"><br>
-										<label>Start: <input type="time"></label><br>
-										<label>End: <input type="time"></label>
+		deSelectCards();
+		console.log($('.card').attr("class"));
+		$('.cardContainer').append(`<div class="card selected">
+										<input class="location" type="text" placeholder="Location"><br>
+										<input class="address" type="text" placeholder="Address"><br>
+										<label>Start time: <input class="beginTime" type="time"></label><br>
+										<label>End time: <input class="endTime" type="time"></label>
 										<textarea class='notes'></textarea><br>
 										<input type="button" value="Remove Card" class="delete">
 									</div>`);
+		$('.card').last().data("selected",true)
 		deleteCard();
+		selectCard();
 	});
 }
 
@@ -99,6 +132,17 @@ function deleteCard() {
 	$('.delete').click(event => {
 		const selectedCard = event.target.closest(".card");
 		selectedCard.remove();
+	});
+}
+
+function deSelectCards () {
+	$('.card').attr("class", "card notSelected");
+}
+
+function selectCard() {
+	$('.location, .address, .beginTime, .endTime, .notes').focus(event => {
+		deSelectCards();
+		$(event.target).closest('.card').attr("class","card selected");
 	});
 }
 // Begin app

@@ -28,6 +28,7 @@ header {
 .result {
 	border: solid black 2px;
 	background: lightgrey;
+	z-index: 1;
 }
 
 #map {
@@ -52,4 +53,8 @@ header {
 	margin: 0 auto;
 	width: 90%;
 	height: 50px;
+}
+
+.selected {
+	background-color: brown;
 }
