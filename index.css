@@ -1,10 +1,10 @@
 .flex-container{
-	display: flex;
-	overflow:hidden;
+		display: flex;
+		overflow: hidden;
   	flex-direction: row;
   	flex-wrap: nowrap;
-  	width: 100%;
-	border: dotted pink;
+		width: 100%;
+		border: dotted pink;
 }
 
 header {
@@ -18,34 +18,22 @@ header {
 	border: dotted pink;
 }
 
+ /* section for card */
+
 .cardContainer {
 	background-color: green;
-	width: 25%;
-	max-height:100%;
-	overflow: scroll;
-}
-
-.result {
-	border: solid black 2px;
-	background: lightgrey;
-	z-index: 1;
-}
-
-#map {
-	width:100%;
-	height:800px;
-}
-
-.searchContainer {
-
-	background-color: pink;
+	text-align: center;
+	color: white;
 	width: 25%;
 	height:800px;
+	max-height: 800px;
 	overflow: scroll;
 }
 
 .card {
 	border: 2px solid black;
+	width= 100%;
+	flex-grow: 1;
 }
 
 .notes {
@@ -57,4 +45,38 @@ header {
 
 .selected {
 	background-color: brown;
+}
+
+#showFull {
+
+}
+
+#create {
+	margin-top:0;
+	align-self:start
+}
+
+#title {
+}
+
+/* section for map */
+
+#map {
+	width:100%;
+	height:800px;
+}
+
+/* section for search sidebar */
+
+.searchContainer {
+	background-color: pink;
+	width: 25%;
+	height:800px;
+	overflow: scroll;
+}
+
+.result {
+	border: solid black 2px;
+	background: lightgrey;
+	z-index: 1;
 }

@@ -16,9 +16,7 @@ function getFourSquareData(callback, searchQuery) {
 function getSearchQuery() {
 	$('.js-search').submit(event => {
 			event.preventDefault();
-			const searchForm = $(event.target).find(".js-query");
-			let searchTerm = searchForm.val();
-			getFourSquareData(showData, searchTerm);
+			getFourSquareData(showData, $(event.target).find(".js-query").val());
 	});
 }
 
