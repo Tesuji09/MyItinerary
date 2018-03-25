@@ -1,76 +1,103 @@
 const FOURSQUARE_URL = 'https://api.foursquare.com/v2/venues/search'
 
-
-function getFourSquareData(callback, searchQuery) {
-	const query = {
-		client_id: 'LRGCN52GOXN3F3GNBI1CXNZSBUQWSRH4IJGWTO0FGEAZ5AVO',
+function getFourSquareData (callback, searchQuery) {
+  const query = {
+    client_id: 'LRGCN52GOXN3F3GNBI1CXNZSBUQWSRH4IJGWTO0FGEAZ5AVO',
 	    client_secret: 'ITVYE3R0XNXBQOW0RGIBEFFDKHH2ZD0LEFJTAVORDI2ZRDJK',
 	    ll: '41.8781,-87.6298',
 	    query: `${searchQuery}`,
 	    v: '20170801',
 	    limit: 20
-	};
-	$.getJSON(FOURSQUARE_URL, query, callback);
+  }
+  $.getJSON(FOURSQUARE_URL, query, callback)
 }
 
-function getSearchQuery() {
-	$('.js-search').submit(event => {
-			event.preventDefault();
-			getFourSquareData(showData, $(event.target).find(".js-query").val());
-	});
+function getSearchQuery () {
+  $('.js-search').submit(event => {
+    event.preventDefault()
+    getFourSquareData(showData, $(event.target).find('.js-query').val())
+  })
 }
 
-function showData(data) {
-	console.log(data)
-	const locations = data.response.venues.map(item => {
-		let locationLat = item.location.lat
-		let locationLng = item.location.lng
-		console.log(item.location.lng)
-		return {lat: locationLat, lng: locationLng};
-	})
-	addMarkers(locations);
-	renderSidebarResults(data.response.venues);
-	//initMap()
+function showData (data) {
+  console.log(data)
+  renderSidebarResults(data.response.venues)
 }
 
+function setMarker (thisLat, thisLng) {
+    console.log(thisLat)
+    if(MARKERS.length !== 0) {
+      MARKERS[0].setMap(null)
+      MARKERS.shift()
+      let marker = new google.maps.Marker({
+        position: {lat: thisLat, lng: thisLng},
+        map: map
+      })
+      MARKERS.push(marker)
+    }
+    else{
+      let marker = new google.maps.Marker({
+        position: {lat: thisLat, lng: thisLng},
+        map: map
+      })
+      MARKERS.push(marker)
+    }
+}
 
-// This section will be for handling sidebar manipulation
+// This section is for handling sidebar manipulation
 function renderSidebarResults (results) {
-	let html = results.map(result =>
-												`<div class="result">
+  let html = results.map(result =>
+    `<div class="result" data-lat="${result.location.lat}" data-lng="${result.location.lng}">
 													<p class="resultName">${result.name}</p>
 													<p>${result.contact.formattedPhone}</p>
 													<p class="resultAddress">${result.location.address} ${result.location.city}, ${result.location.state} ${result.location.postalCode}</p>
-												<div>`);
-	$('#js-searchResults').html(html);
-	appendSideBarResults();
+												<div>`)
+  $('#js-searchResults').html(html)
+  appendSideBarResults()
 }
 
-function appendSideBarResults(name, address) {
-	$('.result').click(event => {
-		event.stopPropagation();
-		console.log($(event.target).find(".resultAddress").text());
-		addResultAddress();
-		addResultName();
-	});
+function appendSideBarResults () {
+  $('.result').click(event => {
+    event.stopPropagation()
+    setMarker($(event.target).data("lat"), $(event.target).data("lng"))
+    addResultAddress()
+    addResultName()
+  })
 }
 
-function addResultAddress() {
-	if($(event.target)===$('.result')){
-		$('.selected .address').val($(event.target).find(".resultAddress").text())
-	}
-	else {
-		$('.selected .address').val($(event.target).parent().find(".resultAddress").text())
-	}
+function getLat() {
+  console.log($(event.target))
+  if($(event.target) === $('.result')) {
+    return $(event.target).data("lat")
+  }
+  else {
+    console.log("else statement" + $(event.target).parent().find('.result').data("lat"))
+  }
 }
 
-function addResultName() {
-	if($(event.target)===$('.result')){
-		$('.selected .location').val($(event.target).find(".resultName").text())
-	}
-	else {
-		$('.selected .location').val($(event.target).parent().find(".resultName").text())
-	}
+function getLng() {
+  if($(event.target) === $('.result')) {
+    return $(event.target).data("lng")
+  }
+  else {
+    return $(event.target).parent().find('.result').data("lng")
+  }
+}
+
+function addResultAddress () {
+  if ($(event.target) === $('.result')) {
+    $('.selected .address').val($(event.target).find('.resultAddress').text())
+  } else {
+    $('.selected .address').val($(event.target).parent().find('.resultAddress').text())
+  }
+}
+
+function addResultName () {
+  if ($(event.target) === $('.result')) {
+    $('.selected .location').val($(event.target).find('.resultName').text())
+  } else {
+    $('.selected .location').val($(event.target).parent().find('.resultName').text())
+  }
 }
 
 // This section will be for handling the map
@@ -86,71 +113,88 @@ function addResultName() {
 // 		return position.coords.longitude;
 // 	});
 // }
-let MARKERS = [];
-let map;
-function initMap() {
-         	map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 41.8781, lng: -87.6298 },
-          zoom: 14,
-        });
+let MARKERS = []
+let map
+function initMap () {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: { lat: 41.8781, lng: -87.6298 },
+    zoom: 14
+  })
+  // let geocoder = new google.maps.Geocoder()
+  // searchAddress(geocoder, map)
 }
 
-function addMarkers(locations) {
-					console.log(locations)
-					locations.forEach(latlng => {
-						console.log(latlng)
-	       	let marker = new google.maps.Marker({
-	        position: latlng});
-					marker.setMap(map); });
-      }
+// function searchAddress(geocoder, map) {
+//   $('#submitAddress').click(event => {
+//     console.log('search click event')
+//     getAddress(geocoder, map)
+//   })
+// }
+//
+// function getAddress(geocoder, resultsMap) {
+//     geocoder.geocode({'address':$('address').val(), function(results, status) {
+//         if (status === 'OK') {
+//           resultsMap.setCenter(results[0].geometry.location)
+//         } else {
+//           alert('Geocode was not successful for the following reason: ' + status)
+//         }
+//       }
+//     })
+// }
 
+function addMarker (locations) {
+  locations.forEach(latlng => {
+    console.log(latlng)
+	       	let marker = new google.maps.Marker({
+	        position: latlng})
+    marker.setMap(map)
+  })
+}
 
 // This section handles cards
 
-function createCard() {
-	$('#create').click(event => {
-
-		deSelectCards();
-		console.log($('.card').attr("class"));
-		$('.cardContainer').append(`<div class="card selected">
+function createCard () {
+  $('#create').click(event => {
+    deSelectCards()
+    $('.cardContainer').append(`<div class="card selected">
 										<input class="location" type="text" placeholder="Location"><br>
 										<input class="address" type="text" placeholder="Address"><br>
 										<label>Start time: <input class="beginTime" type="time"></label><br>
 										<label>End time: <input class="endTime" type="time"></label>
 										<textarea class='notes'></textarea><br>
 										<input type="button" value="Remove Card" class="delete">
-									</div>`);
-		$('.card').last().data("selected",true)
-		deleteCard();
-		selectCard();
-	});
+									</div>`)
+    $('.card').last().data('selected', true)
+    deleteCard()
+    selectCard()
+  })
 }
 
-function deleteCard() {
-	$('.delete').click(event => {
-		const selectedCard = event.target.closest(".card");
-		selectedCard.remove();
-	});
+function deleteCard () {
+  $('.delete').click(event => {
+    const selectedCard = event.target.closest('.card')
+    selectedCard.remove()
+  })
 }
 
 function deSelectCards () {
-	$('.card').attr("class", "card notSelected");
+  $('.card').attr('class', 'card notSelected')
 }
 
-function selectCard() {
-	$('.location, .address, .beginTime, .endTime, .notes').focus(event => {
-		deSelectCards();
-		$(event.target).closest('.card').attr("class","card selected");
-	});
+function selectCard () {
+  $('.location, .address, .beginTime, .endTime, .notes').focus(event => {
+    deSelectCards()
+    $(event.target).closest('.card').attr('class', 'card selected')
+  })
 }
 // Begin app
 
-function showApp() {
-	$('#hideIntro').click( () => {
-	$('.introduction').fadeOut(100);
-});
-getSearchQuery();
-createCard()
+function showApp () {
+  $('#hideIntro').click(() => {
+    $('.introduction').fadeOut(100)
+  })
+  getSearchQuery()
+  createCard()
 }
 
 $(showApp())
