@@ -1,11 +1,20 @@
+// All global variables
+
 const FOURSQUARE_URL = 'https://api.foursquare.com/v2/venues/search'
+let MARKERS = []
+let MAP
+let GEOCODER
+let LOCATION = { lat: 41.8781, lng: -87.6298 }
+
+// API callback
 
 function getFourSquareData (callback, searchQuery) {
   const query = {
     client_id: 'LRGCN52GOXN3F3GNBI1CXNZSBUQWSRH4IJGWTO0FGEAZ5AVO',
 	    client_secret: 'ITVYE3R0XNXBQOW0RGIBEFFDKHH2ZD0LEFJTAVORDI2ZRDJK',
-	    ll: '41.8781,-87.6298',
+	    ll: `${LOCATION.lat},${LOCATION.lng}`,
 	    query: `${searchQuery}`,
+      radius: '10000',
 	    v: '20170801',
 	    limit: 20
   }
@@ -31,15 +40,16 @@ function setMarker (thisLat, thisLng) {
       MARKERS.shift()
       let marker = new google.maps.Marker({
         position: {lat: thisLat, lng: thisLng},
-        map: map
+        map: MAP
       })
+      MAP.panTo({lat: thisLat, lng: thisLng})
       MARKERS.push(marker)
-    }
-    else{
+    } else {
       let marker = new google.maps.Marker({
         position: {lat: thisLat, lng: thisLng},
-        map: map
+        map: MAP
       })
+      MAP.panTo({lat: thisLat, lng: thisLng})
       MARKERS.push(marker)
     }
 }
@@ -113,43 +123,35 @@ function addResultName () {
 // 		return position.coords.longitude;
 // 	});
 // }
-let MARKERS = []
-let map
+
 function initMap () {
-  map = new google.maps.Map(document.getElementById('map'), {
+  GEOCODER = new google.maps.Geocoder()
+  MAP = new google.maps.Map(document.getElementById('map'), {
     center: { lat: 41.8781, lng: -87.6298 },
     zoom: 14
   })
-  // let geocoder = new google.maps.Geocoder()
-  // searchAddress(geocoder, map)
 }
 
-// function searchAddress(geocoder, map) {
-//   $('#submitAddress').click(event => {
-//     console.log('search click event')
-//     getAddress(geocoder, map)
-//   })
-// }
-//
-// function getAddress(geocoder, resultsMap) {
-//     geocoder.geocode({'address':$('address').val(), function(results, status) {
-//         if (status === 'OK') {
-//           resultsMap.setCenter(results[0].geometry.location)
-//         } else {
-//           alert('Geocode was not successful for the following reason: ' + status)
-//         }
-//       }
-//     })
-// }
-
-function addMarker (locations) {
-  locations.forEach(latlng => {
-    console.log(latlng)
-	       	let marker = new google.maps.Marker({
-	        position: latlng})
-    marker.setMap(map)
+function searchAddress() {
+  $('#submitAddress').click(event => {
+    getAddress()
+    console.log("this location " + LOCATION.lng)
   })
 }
+
+function getAddress() {
+    console.log($('#address').val())
+    GEOCODER.geocode({'address':$('#address').val()}, function(results, status) {
+        if (status === 'OK') {
+          LOCATION.lat = results[0].geometry.location.lat()
+          LOCATION.lng = results[0].geometry.location.lng()
+          MAP.setCenter(results[0].geometry.location)
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status)
+        }
+    })
+}
+
 
 // This section handles cards
 
@@ -157,17 +159,21 @@ function createCard () {
   $('#create').click(event => {
     deSelectCards()
     $('.cardContainer').append(`<div class="card selected">
-										<input class="location" type="text" placeholder="Location"><br>
-										<input class="address" type="text" placeholder="Address"><br>
-										<label>Start time: <input class="beginTime" type="time"></label><br>
-										<label>End time: <input class="endTime" type="time"></label>
-										<textarea class='notes'></textarea><br>
-										<input type="button" value="Remove Card" class="delete">
-									</div>`)
+				<input class="location" type="text" placeholder="Location"><br>
+				<input class="address" type="text" placeholder="Address"><br>
+				<label>Start time: <input class="beginTime" type="time"></label><br>
+				<label>End time: <input class="endTime" type="time"></label>
+				<textarea class='notes'></textarea><br>
+				<input type="button" value="Remove Card" class="delete">
+			  </div>`)
     $('.card').last().data('selected', true)
     deleteCard()
     selectCard()
   })
+}
+
+function showFullScreen () {
+
 }
 
 function deleteCard () {
@@ -195,6 +201,7 @@ function showApp () {
   })
   getSearchQuery()
   createCard()
+  searchAddress()
 }
 
 $(showApp())

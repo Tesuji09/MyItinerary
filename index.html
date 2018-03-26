@@ -14,20 +14,17 @@
 			</div>
 		</header>
 		<main class="flex-container">
-			<div class="sideBar">
 				<div class="cardContainer">
 						<label for="title">Title: </label><input type="text" id="title" placeholder="Name your itinerary" ><br>
 						<input type="button" value="Create Card" id="create"><br>
-						<input type="button" value="=>" id="showFull">
+						<input type="button" value="Show Full Screen" id="showFull">
 				</div>
-			</div>
       <div id="locationSearch">
         <input id="address" type="text" placeholder="Places">
         <input id="submitAddress" type="button" value="Search">
       </div>
 			<div id="map"></div>
 			<div class="searchContainer">
-        <p>adding text</p>
 				<form class="js-search">
 					<input type="text" class="js-query"><br />
 					<input type="submit" value="Submit">
@@ -36,6 +33,7 @@
 				</div>
 			</div>
 		</main>
+    <div id="styledItinerary"></div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="index.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiaXqZk9Y14jYBALFPyT_qjC8tAErrisg&callback=initMap" async defer></script>
