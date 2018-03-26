@@ -67,6 +67,16 @@ header {
 #title {
 }
 
+#styledItinerary {
+    display: none;
+    position: absolute;
+    background-color: lightblue;
+    z-index: 2;
+    text-align: center;
+    height: 100vh;
+    width: 100%;
+}
+
 /* section for map */
 #locationSearch {
   z-index: 1;

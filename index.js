@@ -58,9 +58,9 @@ function setMarker (thisLat, thisLng) {
 function renderSidebarResults (results) {
   let html = results.map(result =>
     `<div class="result" data-lat="${result.location.lat}" data-lng="${result.location.lng}">
-													<p class="resultName">${result.name}</p>
-													<p>${result.contact.formattedPhone}</p>
-													<p class="resultAddress">${result.location.address} ${result.location.city}, ${result.location.state} ${result.location.postalCode}</p>
+													<p>${result.name}<br>
+													${result.contact.formattedPhone}<br>
+													${(result.location.address !== undefined) ? result.location.address : ""} ${result.location.city}, ${result.location.state} ${result.location.postalCode}</p>
 												<div>`)
   $('#js-searchResults').html(html)
   appendSideBarResults()
@@ -103,6 +103,7 @@ function addResultAddress () {
 }
 
 function addResultName () {
+  console.log($(event.target))
   if ($(event.target) === $('.result')) {
     $('.selected .location').val($(event.target).find('.resultName').text())
   } else {
@@ -172,8 +173,24 @@ function createCard () {
   })
 }
 
-function showFullScreen () {
+function createFSElement() {
+  let elements = []
+  for(let i = 0; i < $('.card').length; i++) {
+    elements.push(`<h2>${$('.location').eq(i).val()}<h2>
+      <p>${$('.address').eq(i).val()}</p>
+      <p>Begins at ${$('.beginTime').eq(i).val()}</p
+      <p>Ends at ${$('.endTime').eq(i).val()}</p>
+      <p>${$('.notes').eq(i).val()}</p>`)
+  }
+  return elements
+}
 
+function toggleFullScreen () {
+  $('#showFull').click(event => {
+    console.log($('.location').length)
+    $('#styledItinerary').html(createFSElement())
+    $('#styledItinerary').show()
+  })
 }
 
 function deleteCard () {
@@ -202,6 +219,7 @@ function showApp () {
   getSearchQuery()
   createCard()
   searchAddress()
+  toggleFullScreen()
 }
 
 $(showApp())
