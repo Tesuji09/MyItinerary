@@ -64,11 +64,11 @@ function renderSidebarResults (results) {
       data-address="${(result.location.address !== undefined) ? result.location.address : ""}"
       data-city="${result.location.city}"
       data-state="${result.location.state}"
-      data-postalCode="${result.location.postalCode}">
-													<p>${result.name}<br>
-													${result.contact.formattedPhone}<br>
-													${(result.location.address !== undefined) ? result.location.address : ""} ${result.location.city}, ${result.location.state} ${result.location.postalCode}</p>
-												<div>`)
+      data-postal="${result.location.postalCode}">
+				${result.name}<br>
+				${result.contact.formattedPhone}<br>
+				${(result.location.address !== undefined) ? result.location.address : ""} ${result.location.city}, ${result.location.state} ${result.location.postalCode}
+		<div>`)
   $('#js-searchResults').html(html)
   appendSideBarResults()
 }
@@ -83,36 +83,19 @@ function appendSideBarResults () {
 }
 
 function getLat() {
-  console.log($(event.target))
-  if($(event.target) === $('.result')) {
     return $(event.target).data("lat")
-  }
-  else {
-    console.log("else statement" + $(event.target).parent().find('.result').data("lat"))
-  }
 }
 
 function getLng() {
-  if($(event.target) === $('.result')) {
     return $(event.target).data("lng")
-  }
-  else {
-    return $(event.target).parent().find('.result').data("lng")
-  }
 }
 
 function addResultAddress () {
-  if ($(event.target) === $('.result')) {
-    $('.selected .address').val($(event.target).find('.resultAddress').text())
-  } else {
-    $('.selected .address').val($(event.target).parent().find('.resultAddress').text())
-  }
+    $('.selected .address').val(`${$(event.target).data('address')} ${$(event.target).data('city')}, ${$(event.target).data('state')} ${$(event.target).data('postal')}`)
 }
 
 function addResultName () {
-  console.log($(event.target))
-  if ($(event.target) === $('.result')) {
-    $('.selected .location').val($(event.target).find('.resultName').text()
+    $('.selected .location').val($(event.target).data('name'))
 }
 
 // This section will be for handling the map
@@ -139,6 +122,7 @@ function initMap () {
 
 function searchAddress() {
   $('#submitAddress').click(event => {
+    event.preventDefault()
     getAddress()
     console.log("this location " + LOCATION.lng)
   })
@@ -180,19 +164,25 @@ function createCard () {
 function createFSElement() {
   let elements = []
   for(let i = 0; i < $('.card').length; i++) {
-    elements.push(`<h2>${$('.location').eq(i).val()}<h2>
+    elements.push(`<div class='event'>
+      <h2>${$('.location').eq(i).val()}<h2>
       <p>${$('.address').eq(i).val()}</p>
       <p>Begins at ${$('.beginTime').eq(i).val()}</p
       <p>Ends at ${$('.endTime').eq(i).val()}</p>
-      <p>${$('.notes').eq(i).val()}</p>`)
+      <p>${$('.notes').eq(i).val()}</p>
+      </div>`)
   }
   return elements
 }
 
+function hideFullScreen() {
+  $('.hideStyled').click(event => {$('#styledItinerary').hide()})
+}
+
 function toggleFullScreen () {
   $('#showFull').click(event => {
-    console.log($('.location').length)
-    $('#styledItinerary').html(createFSElement())
+    $('.events').html(createFSElement())
+    $('.itinTitle').html(`<h1>${$('#title').val()}</h1>`)
     $('#styledItinerary').show()
   })
 }
@@ -224,6 +214,7 @@ function showApp () {
   createCard()
   searchAddress()
   toggleFullScreen()
+  hideFullScreen()
 }
 
 $(showApp())

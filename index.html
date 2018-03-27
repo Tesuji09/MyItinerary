@@ -20,8 +20,10 @@
 						<input type="button" value="Show Full Screen" id="showFull">
 				</div>
       <div id="locationSearch">
-        <input id="address" type="text" placeholder="Places">
-        <input id="submitAddress" type="button" value="Search">
+        <form>
+          <input id="address" type="text" placeholder="Places">
+          <input id="submitAddress" type="submit" value="Search">
+        </form>
       </div>
 			<div id="map"></div>
 			<div class="searchContainer">
@@ -33,7 +35,13 @@
 				</div>
 			</div>
 		</main>
-    <div id="styledItinerary"></div>
+    <div id="styledItinerary">
+      <div class="itinTitle">
+      </div>
+      <div class="events">
+      </div>
+      <button class="hideStyled" type="button">Close</button>
+    </div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="index.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiaXqZk9Y14jYBALFPyT_qjC8tAErrisg&callback=initMap" async defer></script>
