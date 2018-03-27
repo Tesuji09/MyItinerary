@@ -1,3 +1,9 @@
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
 #map {
   position: absolute;
   z-index:-1;
@@ -6,6 +12,7 @@
 }
 
 header {
+  display: none;
   z-index: 2;
   position: absolute;
   color: white;
@@ -16,30 +23,85 @@ header {
 }
 
 .cardContainer {
+  display: none;
+  box-sizing:border-box;
+  border: 2px;
+  z-index: 1;
   background-color: rgba(161,179,206,0.5);
   position: absolute;
-  left:0;
   text-align: center;
   color: white;
   width: 100%;
-  height: 100vh;
+  height: 70vh;
   overflow-y: scroll;
+}
+
+.card {
+  box-sizing:border-box;
+  border: 2px solid black;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.selected {
+  border: 5px grey inset;
+}
+
+.notes {
+  display: block;
+  margin: 0 auto;
+  width: 90%;
+  height: 50px;
+}
+
+#styledItinerary {
+    display: none;
+    position: absolute;
+    background-color: lightblue;
+    z-index: 3;
+    text-align: center;
+    height: 100vh;
+    width: 100%;
+}
+.event {
+  border: 1px solid black;
 }
 
 .searchContainer {
   position: absolute;
-  right: 0;
+  bottom: 0;
+  box-sizing: border-box;
+  border: 5px black;
   background-color: rgba(161,179,206,0.5);
-  width: 25%;
-  height:100vh;
+  width: 100%;
+  height:30vh;
   overflow-y: scroll;
 }
 
+.result {
+  box-sizing: border-box;
+  border: solid black 2px;
+  padding-top: 10%;
+  height: 20vh;
+  background: lightgrey;
+  line-height: 15px;
+
+}
+
+.showCC {
+  position: absolute;
+  z-index: 1;
+}
+
+#locationSearch {
+  z-index: 0;
+  display: block;
+  position: absolute;
+  left: 43%;
+  top: 50%;
+}
+
 @media (min-width: 960px){
-  body {
-    padding: 0;
-    margin: 0;
-  }
   .flex-container{
       box-sizing: border-box;
       margin:0;
@@ -58,6 +120,7 @@ header {
 
     /* section for card */
   .cardContainer {
+    display:block;
     left:0;
   	color: white;
   	width: 25%;
@@ -65,10 +128,8 @@ header {
   	overflow-y: scroll;
   }
 
-  .card {
-  	border: 2px solid black;
-  	width: 100%;
-  	flex-grow: 1;
+  .showCC {
+    display:none;
   }
 
   .notes {
@@ -104,9 +165,6 @@ header {
       width: 100%;
   }
 
-  .event {
-    border: 1px solid black;
-  }
 
   .hideStyled {
     display: block;
