@@ -57,7 +57,14 @@ function setMarker (thisLat, thisLng) {
 // This section is for handling sidebar manipulation
 function renderSidebarResults (results) {
   let html = results.map(result =>
-    `<div class="result" data-lat="${result.location.lat}" data-lng="${result.location.lng}">
+    `<div class="result" data-lat="${result.location.lat}"
+      data-lng="${result.location.lng}"
+      data-name="${result.name}"
+      data-phone="${result.contact.formattedPhone}"
+      data-address="${(result.location.address !== undefined) ? result.location.address : ""}"
+      data-city="${result.location.city}"
+      data-state="${result.location.state}"
+      data-postalCode="${result.location.postalCode}">
 													<p>${result.name}<br>
 													${result.contact.formattedPhone}<br>
 													${(result.location.address !== undefined) ? result.location.address : ""} ${result.location.city}, ${result.location.state} ${result.location.postalCode}</p>
@@ -105,10 +112,7 @@ function addResultAddress () {
 function addResultName () {
   console.log($(event.target))
   if ($(event.target) === $('.result')) {
-    $('.selected .location').val($(event.target).find('.resultName').text())
-  } else {
-    $('.selected .location').val($(event.target).parent().find('.resultName').text())
-  }
+    $('.selected .location').val($(event.target).find('.resultName').text()
 }
 
 // This section will be for handling the map
