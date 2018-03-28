@@ -117,7 +117,7 @@ function initMap () {
   MAP = new google.maps.Map(document.getElementById('map'), {
     center: { lat: 41.8781, lng: -87.6298 },
     zoom: 14,
-    mapTypeControls: false
+    mapTypeControl: false
   })
 }
 
@@ -149,13 +149,15 @@ function createCard () {
   $('#create').click(event => {
     deSelectCards()
     $('.cardContainer').append(`<div class="card selected">
-				<input class="location" type="text" placeholder="Location"><br>
-				<input class="address" type="text" placeholder="Address"><br>
+      <form>
+        <label>Location: <input class="location" type="text" placeholder="Location"></label><br>
+				<label>Address: <input class="address" type="text" placeholder="Address"></label><br>
 				<label>Start time: <input class="beginTime" type="time"></label><br>
-				<label>End time: <input class="endTime" type="time"></label>
-				<textarea class='notes'></textarea><br>
+				<label>End time: <input class="endTime" type="time"></label><br>
+				<label>Notes<textarea class='notes'></textarea></label><br>
 				<input type="button" value="Remove Card" class="delete">
-			  </div>`)
+      <form>
+        </div>`)
     $('.card').last().data('selected', true)
     deleteCard()
     selectCard()

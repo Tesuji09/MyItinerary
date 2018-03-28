@@ -43,8 +43,14 @@ header {
   margin-top: 5px;
 }
 
+.delete {
+  display: block;
+  margin: 0 auto;
+}
+
 .selected {
   border: 5px grey inset;
+  background-color: rgba(107, 195, 239, 0.8);
 }
 
 .notes {
@@ -84,21 +90,25 @@ header {
   padding-top: 10%;
   height: 20vh;
   background: lightgrey;
-  line-height: 15px;
+  line-height: 30px;
 
 }
 
 .showCC {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
 }
 
 #locationSearch {
   z-index: 0;
   display: block;
   position: absolute;
-  left: 43%;
-  top: 50%;
+  left: 37%;
+  top: 67%;
+}
+
+.js-search {
+  text-align: center;
 }
 
 @media (min-width: 960px){
@@ -139,21 +149,6 @@ header {
   	height: 50px;
   }
 
-  .selected {
-  	background-color: brown;
-  }
-
-  #showFull {
-
-  }
-
-  #create {
-  	margin-top:0;
-  	align-self:start
-  }
-
-  #title {
-  }
 
   #styledItinerary {
       display: none;
