@@ -63,14 +63,19 @@ header {
 #styledItinerary {
     display: none;
     position: absolute;
-    background-color: lightblue;
+    background-color: rgb(232, 227, 239);
+    box-sizing: border-box;
+    /* box-shadow: 0px 0px 10px 50px grey inset; */
+    border: 10px double rgb(58, 56, 61);
     z-index: 3;
     text-align: center;
     height: 100vh;
     width: 100%;
 }
 .event {
-  border: 1px solid black;
+  border-bottom: 2px solid black;
+  margin: 0 auto;
+  width: 50%;
 }
 
 .searchContainer {
@@ -89,7 +94,7 @@ header {
   border: solid black 2px;
   padding-top: 10%;
   height: 20vh;
-  background: lightgrey;
+  background-color: rgba(161,179,206,0.8);
   line-height: 30px;
 
 }
@@ -150,16 +155,6 @@ header {
   }
 
 
-  #styledItinerary {
-      display: none;
-      position: absolute;
-      background-color: lightblue;
-      z-index: 3;
-      text-align: center;
-      height: 100vh;
-      width: 100%;
-  }
-
 
   .hideStyled {
     display: block;
@@ -186,9 +181,4 @@ header {
   	height:100vh;
   }
 
-  .result {
-  	border: solid black 2px;
-  	background: lightgrey;
-  	z-index: 1;
-  }
 }

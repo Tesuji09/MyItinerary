@@ -1,36 +1,27 @@
 // All global variables
 
-const FOURSQUARE_URL = 'https://api.foursquare.com/v2/venues/search'
 let MARKERS = []
 let MAP
 let GEOCODER
 let LOCATION = { lat: 41.8781, lng: -87.6298 }
+let SERVICE
 
 // API callback
 
-function getFourSquareData (callback, searchQuery) {
+function getGetGooglePlacesData (searchQuery, callback) {
   const query = {
-    client_id: 'LRGCN52GOXN3F3GNBI1CXNZSBUQWSRH4IJGWTO0FGEAZ5AVO',
-	    client_secret: 'ITVYE3R0XNXBQOW0RGIBEFFDKHH2ZD0LEFJTAVORDI2ZRDJK',
-	    ll: `${LOCATION.lat},${LOCATION.lng}`,
-	    query: `${searchQuery}`,
-      radius: '10000',
-	    v: '20170801',
-	    limit: 20
+    location: LOCATION,
+    radius: '500',
+    query: `${searchQuery}`
   }
-  $.getJSON(FOURSQUARE_URL, query, callback)
+  SERVICE.textSearch(query, callback)
 }
 
 function getSearchQuery () {
   $('.js-search').submit(event => {
     event.preventDefault()
-    getFourSquareData(showData, $(event.target).find('.js-query').val())
+    getGetGooglePlacesData($(event.target).find('.js-query').val(), renderSidebarResults)
   })
-}
-
-function showData (data) {
-  console.log(data)
-  renderSidebarResults(data.response.venues)
 }
 
 function setMarker (thisLat, thisLng) {
@@ -56,27 +47,32 @@ function setMarker (thisLat, thisLng) {
 
 // This section is for handling sidebar manipulation
 function renderSidebarResults (results) {
+
   let html = results.map(result =>
-    `<div class="result" data-lat="${result.location.lat}"
-      data-lng="${result.location.lng}"
+    `<div class="result" data-lat="${result.geometry.location.lat()}"
+      data-lng="${result.geometry.location.lng()}"
       data-name="${result.name}"
-      data-phone="${result.contact.formattedPhone}"
-      data-address="${(result.location.address !== undefined) ? result.location.address : ""}"
-      data-city="${result.location.city}"
-      data-state="${result.location.state}"
-      data-postal="${result.location.postalCode}">
+      data-address="${result.formatted_address}"
+      data-id="${result.place_id}">
 				${result.name}<br>
-				${result.contact.formattedPhone}<br>
-				${(result.location.address !== undefined) ? result.location.address : ""} ${result.location.city}, ${result.location.state} ${result.location.postalCode}
+				${result.formatted_address}<br>
+        <input type="button" value="Show Details" class="showDetails">
 		<div>`)
   $('#js-searchResults').html(html)
   appendSideBarResults()
 }
 
+function showDetals(place, status)
+function getResultDetails(id) {
+  SERVICE.getDetails({placeId: id}, (place, status) => {
+    console.log(place)
+  })
+}
 function appendSideBarResults () {
   $('.result').click(event => {
     event.stopPropagation()
     setMarker($(event.target).data("lat"), $(event.target).data("lng"))
+    getResultDetails($(event.target).data("id"))
     addResultAddress()
     addResultName()
   })
@@ -119,6 +115,7 @@ function initMap () {
     zoom: 14,
     mapTypeControl: false
   })
+  SERVICE = new google.maps.places.PlacesService(MAP)
 }
 
 function searchAddress() {
@@ -184,6 +181,7 @@ function hideFullScreen() {
 
 function toggleFullScreen () {
   $('#showFull').click(event => {
+    console.log('this is working')
     $('.events').html(createFSElement())
     $('.itinTitle').html(`<h1>${$('#title').val()}</h1>`)
     $('#styledItinerary').show()
