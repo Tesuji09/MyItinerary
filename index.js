@@ -62,10 +62,12 @@ function renderSidebarResults (results) {
   appendSideBarResults()
 }
 
-function showDetals(place, status)
 function getResultDetails(id) {
   SERVICE.getDetails({placeId: id}, (place, status) => {
-    console.log(place)
+    console.log(place.formatted_phone_number)
+    // $(event.target).parent.append(`<div class="details">
+    // ${place.formatted_phone_number}
+    // <div>`)
   })
 }
 function appendSideBarResults () {

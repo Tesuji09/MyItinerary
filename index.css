@@ -92,11 +92,14 @@ header {
 .result {
   box-sizing: border-box;
   border: solid black 2px;
-  padding-top: 10%;
   height: 20vh;
   background-color: rgba(161,179,206,0.8);
   line-height: 30px;
 
+}
+
+.result:hover {
+  cursor: pointer;
 }
 
 .showCC {
@@ -106,10 +109,12 @@ header {
 
 #locationSearch {
   z-index: 0;
+  border: solid black 1px;
+  background-color:rgba(161,179,206,0.8);
   display: block;
   position: absolute;
   left: 37%;
-  top: 67%;
+  top: 5%;
 }
 
 .js-search {
@@ -169,7 +174,7 @@ header {
     display: block;
     position: absolute;
     left: 43%;
-    top: 75%;
+    top: 5%;
   }
 
 
