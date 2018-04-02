@@ -6,12 +6,14 @@ body {
 
 #map {
   position: absolute;
-  z-index:-1;
-  width:100%;
-  height:100vh;
+  z-index: -1;
+  width: 100%;
+  height: 50vh;
+  bottom: 0;
 }
 
-header {
+.intro-page {
+  display: none;
   z-index: 2;
   position: absolute;
   color: white;
@@ -21,15 +23,13 @@ header {
   text-align: center;
 }
 
-.cardContainer {
-  display: none;
+.card-container {
   box-sizing:border-box;
   border: 2px;
   z-index: 1;
-  background-color: rgba(161,179,206,0.5);
+  background-color: rgba(161,179,206,0.9);
   position: absolute;
   text-align: center;
-  color: white;
   width: 100%;
   height: 50vh;
   overflow-y: scroll;
@@ -37,14 +37,13 @@ header {
 
 #create{
   position: fixed;
-  left:8.5%;
+  left:42.5%;
 }
 
 .card {
   box-sizing:border-box;
   border: 2px solid black;
-  width: 100%;
-  margin-top: 5px;
+  margin-top: 20px;
 }
 
 .delete {
@@ -64,7 +63,13 @@ header {
   height: 50px;
 }
 
-#styledItinerary {
+#showFull {
+  display: fixed;
+  /* left: 40%;
+  top: 10px; */
+}
+
+.styled-itinerary {
     display: none;
     position: absolute;
     background-color: rgb(232, 227, 239);
@@ -82,7 +87,8 @@ header {
   width: 50%;
 }
 
-.searchContainer {
+.search-container {
+  display: none;
   position: absolute;
   bottom: 0;
   box-sizing: border-box;
@@ -96,13 +102,13 @@ header {
 .result {
   box-sizing: border-box;
   border: solid black 2px;
-  height: 20vh;
+  height: 100%;
   background-color: rgba(161,179,206,0.8);
   line-height: 30px;
 
 }
 
-.addEvent:hover, #showDetails:hover {
+.addEvent:hover, .showDetails:hover {
   cursor: pointer;
 }
 
@@ -111,7 +117,7 @@ header {
   z-index: 2;
 }
 
-#locationSearch {
+.location-search {
   z-index: 0;
   border: solid black 1px;
   background-color:rgba(161,179,206,0.8);
@@ -120,7 +126,7 @@ header {
   left: 37%;
   top: 5%;
 }
-#initialLocationSearch {
+.initial-location-search {
   border: solid black 1px;
   background-color:rgba(161,179,206,0.8);
   display: block;
@@ -131,6 +137,12 @@ header {
 }
 
 @media (min-width: 960px){
+  #map {
+    width: 75%;
+    height: 100vh;
+    right: 0;
+  }
+
   main {
       box-sizing: border-box;
       margin:0;
@@ -138,7 +150,7 @@ header {
   		width: 100%;;
   }
 
-  header {
+  .intro-page {
   	position: absolute;
     color: white;
   	width:100%;
@@ -148,13 +160,22 @@ header {
   }
 
     /* section for card */
-  .cardContainer {
+  .card-container {
     display:block;
     left:0;
   	color: white;
   	width: 25%;
   	height: 50vh;
   	overflow-y: scroll;
+  }
+
+  #showFull {
+    position: fixed;
+    left: 8%;
+  }
+
+  #create {
+    left: 8.5%;
   }
 
   .showCC {
@@ -170,7 +191,7 @@ header {
 
 
 
-  .hideStyled {
+  #hideStyled {
     display: block;
     position: relative;
     margin: 0 auto;
@@ -178,7 +199,7 @@ header {
   }
 
   /* section for map */
-  #locationSearch {
+  .location-search {
     z-index: 1;
     display: block;
     position: absolute;
@@ -189,7 +210,7 @@ header {
 
   /* section for search sidebar */
 
-  .searchContainer {
+  .search-container {
     display: none;
     border: solid black;
     left:0;
