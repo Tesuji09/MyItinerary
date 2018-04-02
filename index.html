@@ -2,15 +2,20 @@
 <html lang="en">
 <head>
 	<meta name ="viewport" content="width=device-width, initial-scale=1">
-	<title>Right now this is just to test the APIs</title>
+	<title>MyItinerary</title>
 	<link rel='stylesheet' href='index.css'>
 </head>
 <body>
 		<header class='introduction'>
 			<div class='intro-flex'>
-				<h1>This is the header for the Itro page</h1>
-				<p> This is a tool used to search for any place and create an itinerary for your trip?</p>
-				<button id ="hideIntro" type="button">Try it out!</button>
+				<h1>Let's make an Itinerary:</h1>
+				<p> Begin by selecting a location</p>
+				<div id="initialLocationSearch">
+	        <form class="locationForm">
+	          <input id="address" type="text" placeholder="Enter Address, City etc..">
+	          <input id="initialAddress" type="submit" value="Search">
+	        </form>
+	      </div>
 			</div>
 		</header>
 		<main class="flex-container">
@@ -23,7 +28,7 @@
       <div id="locationSearch">
         <form class="locationForm">
           <input id="address" type="text" placeholder="Enter Address, City etc..">
-          <input id="submitAddress" type="submit" value="Search">
+          <input id="submitAddress" type="button" value="Search">
         </form>
       </div>
 			<div id="map"></div>

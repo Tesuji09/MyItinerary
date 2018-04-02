@@ -56,7 +56,8 @@ function renderSidebarResults (results) {
       data-id="${result.place_id}">
 				${result.name}<br>
 				${result.formatted_address}<br>
-        <input type="button" value="Show Details" class="showDetails">
+        <input type="button" value="Show Details" id="showDetails">
+        <input type="button" value="Add Event" class="addEvent">
 		<div>`)
   $('#js-searchResults').html(html)
   appendSideBarResults()
@@ -71,29 +72,30 @@ function getResultDetails(id) {
   })
 }
 function appendSideBarResults () {
-  $('.result').click(event => {
+  $('#addEvent').click(event => {
     event.stopPropagation()
-    setMarker($(event.target).data("lat"), $(event.target).data("lng"))
-    getResultDetails($(event.target).data("id"))
+    setMarker($(event.target).parent().data("lat"), $(event.target).parent().data("lng"))
+    getResultDetails($(event.target).parent().data("id"))
     addResultAddress()
     addResultName()
+    hideSearchContainer()
   })
 }
 
 function getLat() {
-    return $(event.target).data("lat")
+    return $(event.target).parent().data("lat")
 }
 
 function getLng() {
-    return $(event.target).data("lng")
+    return $(event.target).parent().data("lng")
 }
 
 function addResultAddress () {
-    $('.selected .address').val(`${$(event.target).data('address')} ${$(event.target).data('city')}, ${$(event.target).data('state')} ${$(event.target).data('postal')}`)
+    $('.selected .address').val(`${$(event.target).parent().data('address')}`)
 }
 
 function addResultName () {
-    $('.selected .location').val($(event.target).data('name'))
+    $('.selected .location').val($(event.target).parent().data('name'))
 }
 
 // This section will be for handling the map
@@ -125,6 +127,14 @@ function searchAddress() {
     event.preventDefault()
     getAddress()
     console.log("this location " + LOCATION.lng)
+  })
+}
+
+function searchInitialAddress() {
+  $('#initialAddress').click(event => {
+    event.preventDefault()
+    getAddress()
+    $('.introduction').fadeOut(100)
   })
 }
 
@@ -160,7 +170,21 @@ function createCard () {
     $('.card').last().data('selected', true)
     deleteCard()
     selectCard()
+    toBottom()
+    showSearchContainer()
   })
+}
+function toBottom() {
+  $('.cardContainer').animate({
+   scrollTop: $('.cardContainer').height()},
+   1400)
+}
+function showSearchContainer () {
+  $('.searchContainer').show()
+}
+
+function hideSearchContainer() {
+  $('.searchContainer').hide()
 }
 
 function createFSElement() {
@@ -216,9 +240,7 @@ function selectCard () {
 // Begin app
 
 function showApp () {
-  $('#hideIntro').click(() => {
-    $('.introduction').fadeOut(100)
-  })
+  searchInitialAddress()
   getSearchQuery()
   createCard()
   searchAddress()
