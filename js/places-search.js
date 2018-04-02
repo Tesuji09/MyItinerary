@@ -10,7 +10,7 @@ function renderSidebarResults (results) {
         <input type="button" value="Show Details" class="js-show-details">
         <input type="button" value="Add Event" class="js-add-event">
 		<div>`)
-  $('#js-search-results').html(html)
+  $('.js-search-results').html(html)
   console.log('this function is working now')
   appendSideBarResults()
 }

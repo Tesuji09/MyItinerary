@@ -10,15 +10,26 @@ function initMap () {
 
 function getPlaceDetails() {
   $('.js-show-details').click( event => {
-    SERVICE.getDetails({placeId: $(event.target).parent().data('id')}, showDetails)
+    const placeId = $(event.currentTarget).parent().data('id')
+
+    SERVICE.getDetails({ placeId }, showDetails)
   })
 }
 
 function showDetails(data) {
-  console.log((`<div class="details">
-  <p>${data.website}</p>
-  <p>${data.formatted_phone_number}</p>
-  <p>${data.formatted_address}</p>`))
+  const $el = $(`.js-search-results div[data-id="${ data.place_id }"]`)
+  console.log($el.find('.details').length)
+  if ($el.find('.details').length  !== 0){
+    $el.find('.js-show-details').attr("value", "Show Details")
+    $el.find('.details').remove()
+  } else{
+    $el.append(`<div class="details">
+    <p>${data.website}</p>
+    <p>${data.formatted_phone_number}</p>
+    <p>${data.formatted_address}</p>
+    </div>`)
+    $el.find('.js-show-details').attr("value", "Hide Details")
+  }
 }
 
 function getGetGooglePlacesData (searchQuery, callback) {
