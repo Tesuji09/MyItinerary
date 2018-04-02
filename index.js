@@ -62,7 +62,9 @@ function renderSidebarResults (results) {
   appendSideBarResults()
 }
 
-function showDetals(place, status)
+function showDetals(place, status){
+  
+}
 function getResultDetails(id) {
   SERVICE.getDetails({placeId: id}, (place, status) => {
     console.log(place)
