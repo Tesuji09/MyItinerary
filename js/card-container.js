@@ -11,6 +11,7 @@ function createCard () {
 				<input type="button" value="Remove Card" class="delete">
       <form>
         </div>`)
+    setCardIndex()
     $('.card').last().data('selected', true)
     deleteCard()
     selectCard()
@@ -19,6 +20,11 @@ function createCard () {
     toggleSideBar()
   })
 }
+
+function setCardIndex(){
+  $('.selected').data("cardIndex",$('.card').length-1)
+}
+
 function toBottom() {
   $('.card-container').animate({
    scrollTop: $('.cards-list').height() + $('.card-form').height()},
@@ -52,7 +58,6 @@ function hideFullScreen() {
 
 function toggleFullScreen () {
   $('#showFull').click(event => {
-    console.log('this is working')
     $('.events').html(createFSElement())
     $('.itin-title').html(`<h1>${$('#title').val()}</h1>`)
     $('.styled-itinerary').show()
@@ -62,16 +67,40 @@ function toggleFullScreen () {
 function deleteCard () {
   $('.delete').click(event => {
     const selectedCard = $(event.target).closest('.card')
-    const cardIndex = selectedCard.data("index")
-    console.log(MARKERS.length)
-    MARKERS[cardIndex].setMap(null)
-    MARKERS.splice(cardIndex, 1)
+    if(selectedCard.data('markerIndex') !== undefined){
+      removeDeletedCardsMarker(selectedCard)
+    }
     selectedCard.remove()
+    resetAllCardIndexes()
+    renameMarkers()
   })
 }
 
+function removeDeletedCardsMarker(selectedCard) {
+  const markerIndex = selectedCard.data("markerIndex")
+  MARKERS[markerIndex].setMap(null)
+  delete MARKERS[markerIndex]
+}
+
+function resetAllCardIndexes() {
+  for (let i = 0; i < $('.cards-list').length; i++){
+    $('.card').eq(i).data("cardIndex", i)
+
+  }
+
+}
+
+function renameMarkers() {
+  for (let i = 0; i < MARKERS.length; i++){
+    const markerIndex = $(`.card`).eq(i).data('markerIndex')
+    if(MARKERS[markerIndex] !== undefined){
+      MARKERS[markerIndex].setLabel(`${i+1}`)
+    }
+  }
+}
+
 function toggleSideBar() {
-  $('.card-container').toggle('slow')
+  $('.card-container').toggle('fast')
 }
 
 function toggleOnClick () {

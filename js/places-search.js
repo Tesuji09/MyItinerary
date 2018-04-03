@@ -11,17 +11,14 @@ function renderSidebarResults (results) {
         <input type="button" value="Add Event" class="js-add-event">
 		<div>`)
   $('.js-search-results').html(html)
-  console.log('this function is working now')
   appendSideBarResults()
 }
 
 function appendSideBarResults () {
-  console.log('this is working')
   getPlaceDetails()
   $('.js-add-event').click(event => {
     event.stopPropagation()
     setMarker($(event.target).parent().data("lat"), $(event.target).parent().data("lng"))
-    $('.selected').data("index", MARKERS.length-1)
     addResultAddress()
     addResultName()
     toggleSideBar()

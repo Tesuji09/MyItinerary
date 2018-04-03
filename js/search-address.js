@@ -1,6 +1,5 @@
 
 function getAddress() {
-    console.log($('.address').val())
     GEOCODER.geocode({'address':$('.address').val()}, function(results, status) {
         if (status === 'OK') {
           LOCATION.lat = results[0].geometry.location.lat()
@@ -24,6 +23,5 @@ function searchAddress() {
   $('#submit-address').click(event => {
     event.preventDefault()
     getAddress()
-    console.log("this location " + LOCATION.lng)
   })
 }
