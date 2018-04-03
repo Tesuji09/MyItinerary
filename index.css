@@ -9,7 +9,7 @@ body {
   z-index: -1;
   width: 100%;
   height: 50vh;
-  bottom: 0;
+  top: 0;
 }
 
 .intro-page {
@@ -32,12 +32,16 @@ body {
   text-align: center;
   width: 100%;
   height: 50vh;
+  top:50%;
   overflow-y: scroll;
 }
 
 #create{
   position: fixed;
-  left:42.5%;
+  left: 23.8%;
+  height: 25px;
+  width: 50%;
+  margin: 5px;
 }
 
 .card {
@@ -64,9 +68,16 @@ body {
 }
 
 #showFull {
-  display: fixed;
-  /* left: 40%;
-  top: 10px; */
+  position: fixed;
+  left: 23.8%;
+  height: 25px;
+  width: 50%;
+  margin: 5px;
+  margin-top: 15px;
+}
+
+#title {
+  margin-top: 25px;
 }
 
 .styled-itinerary {
@@ -74,12 +85,25 @@ body {
     position: absolute;
     background-color: rgb(232, 227, 239);
     box-sizing: border-box;
-    /* box-shadow: 0px 0px 10px 50px grey inset; */
-    border: 10px double rgb(58, 56, 61);
     z-index: 3;
     text-align: center;
     height: 100%;
     width: 100%;
+}
+.itin-title {
+  border: 10px double rgb(58, 56, 61);
+  margin: 0;
+}
+.events {
+  margin: 0;
+  border-left: 10px double rgb(58, 56, 61);
+  border-right: 10px double rgb(58, 56, 61);
+}
+
+.footer {
+  border-bottom: 10px double rgb(58, 56, 61);
+  border-right: 10px double rgb(58, 56, 61);
+  border-left: 10px double rgb(58, 56, 61);
 }
 .event {
   border-bottom: 2px solid black;
@@ -95,7 +119,8 @@ body {
   border: 5px black;
   background-color: rgba(161,179,206,0.5);
   width: 100%;
-  height:50vh;
+  height: 50vh;
+  top: 50%;
   overflow-y: scroll;
 }
 
@@ -114,6 +139,7 @@ body {
 
 .showCC {
   position: absolute;
+  top: 50%;
   z-index: 2;
 }
 
@@ -137,40 +163,38 @@ body {
 }
 
 @media (min-width: 960px){
-  #map {
-    width: 75%;
-    height: 100vh;
-    right: 0;
-  }
 
   main {
       box-sizing: border-box;
       margin:0;
       padding: 0;
-  		width: 100%;;
+  		width: 100%;
   }
 
   .intro-page {
   	position: absolute;
     color: white;
-  	width:100%;
-  	height:100vh;
-  	background-color:rgba(0, 0, 255, .9);
+  	width: 100%;
+  	height: 100vh;
+  	background-color: rgba(0, 0, 255, .9);
   	text-align: center;
   }
 
     /* section for card */
   .card-container {
-    display:block;
-    left:0;
+    display: block;
+    left: 0;
   	color: white;
   	width: 25%;
   	height: 50vh;
+    top: 0;
   	overflow-y: scroll;
   }
 
   #showFull {
     position: fixed;
+    width: 100%;
+    hei
     left: 8%;
   }
 
@@ -179,7 +203,7 @@ body {
   }
 
   .showCC {
-    display:none;
+    display: none;
   }
 
   .notes {
@@ -207,6 +231,11 @@ body {
     top: 5%;
   }
 
+  #map {
+    width: 75%;
+    height: 100vh;
+    right: 0;
+  }
 
   /* section for search sidebar */
 
@@ -214,7 +243,6 @@ body {
     display: none;
     border: solid black;
     left:0;
-    bottom:0;
   	width: 25%;
   	height:50vh;
   }

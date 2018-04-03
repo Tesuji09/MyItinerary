@@ -16,6 +16,7 @@ function createCard () {
     selectCard()
     toBottom()
     showSearchContainer()
+    toggleSideBar()
   })
 }
 function toBottom() {
@@ -53,22 +54,30 @@ function toggleFullScreen () {
   $('#showFull').click(event => {
     console.log('this is working')
     $('.events').html(createFSElement())
-    $('.itin-Title').html(`<h1>${$('#title').val()}</h1>`)
+    $('.itin-title').html(`<h1>${$('#title').val()}</h1>`)
     $('.styled-itinerary').show()
   })
 }
 
 function deleteCard () {
   $('.delete').click(event => {
-    const selectedCard = event.target.closest('.card')
+    const selectedCard = $(event.target).closest('.card')
+    const cardIndex = selectedCard.data("index")
+    console.log(MARKERS.length)
+    MARKERS[cardIndex].setMap(null)
+    MARKERS.splice(cardIndex, 1)
     selectedCard.remove()
   })
 }
 
-function toggleSidebar() {
-$('.showCC').click(event => {
+function toggleSideBar() {
   $('.card-container').toggle('slow')
-  })
+}
+
+function toggleOnClick () {
+  $('.showCC').click(event => {
+    toggleSideBar()
+    })
 }
 
 function deSelectCards () {

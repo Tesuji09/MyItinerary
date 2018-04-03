@@ -42,7 +42,7 @@ function showApp () {
   searchAddress()
   toggleFullScreen()
   hideFullScreen()
-  toggleSidebar()
+  toggleOnClick()
 }
 
 $(showApp())

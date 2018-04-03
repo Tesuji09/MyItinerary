@@ -21,8 +21,10 @@ function appendSideBarResults () {
   $('.js-add-event').click(event => {
     event.stopPropagation()
     setMarker($(event.target).parent().data("lat"), $(event.target).parent().data("lng"))
+    $('.selected').data("index", MARKERS.length-1)
     addResultAddress()
     addResultName()
+    toggleSideBar()
   })
 }
 

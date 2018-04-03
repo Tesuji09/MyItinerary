@@ -24,7 +24,7 @@ function showDetails(data) {
     $el.find('.details').remove()
   } else{
     $el.append(`<div class="details">
-    <p>${data.website}</p>
+    <a href="${data.website}">Website</a>
     <p>${data.formatted_phone_number}</p>
     <p>${data.formatted_address}</p>
     </div>`)
@@ -50,21 +50,21 @@ function getSearchQuery () {
 
 function setMarker (thisLat, thisLng) {
     console.log(thisLat)
-    if(MARKERS.length !== 0) {
-      MARKERS[0].setMap(null)
-      MARKERS.shift()
+    // if(MARKERS.length !== 0) {
+    //   MARKERS[0].setMap(null)
+    //   MARKERS.shift()
+    //   let marker = new google.maps.Marker({
+    //     position: {lat: thisLat, lng: thisLng},
+    //     map: MAP
+    //   })
+    //   MAP.panTo({lat: thisLat, lng: thisLng})
+    //   MARKERS.push(marker)
+    // } else {
       let marker = new google.maps.Marker({
         position: {lat: thisLat, lng: thisLng},
         map: MAP
       })
       MAP.panTo({lat: thisLat, lng: thisLng})
       MARKERS.push(marker)
-    } else {
-      let marker = new google.maps.Marker({
-        position: {lat: thisLat, lng: thisLng},
-        map: MAP
-      })
-      MAP.panTo({lat: thisLat, lng: thisLng})
-      MARKERS.push(marker)
-    }
+    // }
   }
