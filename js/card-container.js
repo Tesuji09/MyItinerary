@@ -42,7 +42,7 @@ function createFSElement() {
   let elements = []
   for(let i = 0; i < $('.card').length; i++) {
     elements.push(`<div class='event'>
-      <h2>${$('.location').eq(i).val()}<h2>
+      <h1>${$('.location').eq(i).val()}</h1>
       <p>${$('.address').eq(i).val()}</p>
       <p>Begins at ${$('.beginTime').eq(i).val()}</p
       <p>Ends at ${$('.endTime').eq(i).val()}</p>
