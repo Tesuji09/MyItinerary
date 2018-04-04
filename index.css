@@ -13,7 +13,6 @@ body {
 }
 
 .intro-page {
-  display: none;
   z-index: 2;
   position: absolute;
   color: white;
@@ -192,14 +191,13 @@ body {
   }
 
   #showFull {
-    position: fixed;
-    width: 100%;
-    hei
-    left: 8%;
+    width: 15%;
+    left: 4.4%;
   }
 
   #create {
-    left: 8.5%;
+    width: 15%;
+    left: 4.4%;
   }
 
   .showCC {

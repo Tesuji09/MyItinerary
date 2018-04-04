@@ -1,6 +1,6 @@
 
 function getAddress() {
-    GEOCODER.geocode({'address':$('.address').val()}, function(results, status) {
+    GEOCODER.geocode({'address':$('.js-address').val()}, function(results, status) {
         if (status === 'OK') {
           LOCATION.lat = results[0].geometry.location.lat()
           LOCATION.lng = results[0].geometry.location.lng()
@@ -14,8 +14,9 @@ function getAddress() {
 function searchInitialAddress() {
   $('#js-submit-initial-address').click(event => {
     event.preventDefault()
+    $('.js-address').val($('#initial-address').val())
     getAddress()
-    $('.introduction').fadeOut(100)
+    $('.intro-page').fadeOut(100)
   })
 }
 
