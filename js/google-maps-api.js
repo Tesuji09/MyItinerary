@@ -46,26 +46,33 @@ function getSearchQuery () {
     getGetGooglePlacesData($(event.target).find('.js-query').val(), renderSidebarResults)
   })
 }
+function createNewMarker(thisLat, thisLng) {
+  let marker = new google.maps.Marker({
+    position: {lat: thisLat, lng: thisLng},
+    map: MAP
+  })
+  MAP.panTo({lat: thisLat, lng: thisLng})
+  MARKERS.push(marker)
+  $('.selected').data("markerIndex", MARKERS.length - 1)
+  MARKERS[MARKERS.length - 1].setLabel(`${$('.selected').data("cardIndex") + 1}`)
+}
+
+function replaceMarker() {
+  let markerIndex = $('.selected').data("markerIndex")
+  let marker = new google.maps.Marker({
+    position: {lat: thisLat, lng: thisLng},
+    map: MAP
+  })
+  MAP.panTo({lat: thisLat, lng: thisLng})
+  MARKERS[markerIndex].setMap(null)
+  MARKERS[markerIndex] = marker
+  MARKERS[markerIndex].setLabel(`${$('.selected').data("cardIndex") + 1}`)
+}
 
 function setMarker (thisLat, thisLng) {
       if($('.selected').data('markerIndex') === undefined) {
-        let marker = new google.maps.Marker({
-          position: {lat: thisLat, lng: thisLng},
-          map: MAP
-        })
-        MAP.panTo({lat: thisLat, lng: thisLng})
-        MARKERS.push(marker)
-        $('.selected').data("markerIndex", MARKERS.length - 1)
-        MARKERS[MARKERS.length - 1].setLabel(`${$('.selected').data("cardIndex") + 1}`)
+        createNewMarker(thisLat, thisLng)
      } else {
-       let markerIndex = $('.selected').data("markerIndex")
-       let marker = new google.maps.Marker({
-         position: {lat: thisLat, lng: thisLng},
-         map: MAP
-       })
-       MAP.panTo({lat: thisLat, lng: thisLng})
-       MARKERS[markerIndex].setMap(null)
-       MARKERS[markerIndex] = marker
-       MARKERS[markerIndex].setLabel(`${$('.selected').data("cardIndex") + 1}`)
+       replaceMarker(thisLat, thisLng)
      }
   }
