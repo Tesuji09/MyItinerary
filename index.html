@@ -10,24 +10,25 @@
 <body>
 		<div class='intro-page'>
 			<div class='description-container'>
-				<h1>Let's make an Itinerary:</h1>
-				<p> Begin by choosing and area to search:</p>
+				<h1 class="header">Let's make an Itinerary!</h1>
+				<p class="headerSubText"> Begin by choosing an area to search:</p>
 				<div class="initial-location-search">
 	        <form class="location-form">
 	          <input id="initial-address" type="text" placeholder="Enter an Address, City etc.." aria-label="Enter a Location">
 	          <input id="js-submit-initial-address" type="submit" value="Search">
 	        </form>
 	      </div>
+				<div class="white-space"></div>
 			</div>
 		</div>
 		<main>
 				<input type="image" src="icons/Navigation.png" class="showCC">
 				<div class="card-container">
             <div class="card-form">
-    					<input type="button" value="Create Event" id="create"><br>
-    					<input type="button" value="Show Full Screen" id="showFull"><br>
-              <label for="title">Title: </label><input type="text" id="title" placeholder="Name your itinerary" >
+    					<input type="button" value="Create New Destination" id="create"><br>
+    					<input type="button" value="Printable Version" id="showFull"><br>
             </div>
+						<label for="title">Title: </label><input type="text" id="title" placeholder="Name your itinerary" >
             <div class="cards-list" aria-live="assertive"></div>
 				</div>
       <div class="location-search">

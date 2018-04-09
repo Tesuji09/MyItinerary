@@ -5,8 +5,7 @@ function createCard () {
       <form>
         <label>Location: <input class="location" type="text" placeholder="Location"></label><br>
 				<label>Address: <input class="address" type="text" placeholder="Address"></label><br>
-				<label>Start time: <input class="beginTime" type="time"></label><br>
-				<label>End time: <input class="endTime" type="time"></label><br>
+				<label>Time: <input class="beginTime" type="time"></label><br>
 				<label>Notes<textarea class='notes'></textarea></label><br>
 				<input type="button" value="Remove Card" class="delete">
       <form>
@@ -16,7 +15,6 @@ function createCard () {
     deleteCard()
     selectCard()
     toBottom()
-    showSearchContainer()
     toggleSideBar()
   })
 }
@@ -44,8 +42,7 @@ function createFSElement() {
     elements.push(`<div class='event'>
       <h1>${$('.location').eq(i).val()}</h1>
       <p>${$('.address').eq(i).val()}</p>
-      <p>Begins at ${$('.beginTime').eq(i).val()}</p
-      <p>Ends at ${$('.endTime').eq(i).val()}</p>
+      <p>Begins at ${$('.beginTime').eq(i).val()}</p>
       <p>${$('.notes').eq(i).val()}</p>
       </div>`)
   }
@@ -100,7 +97,7 @@ function renameMarkers() {
 }
 
 function toggleSideBar() {
-  $('.card-container').toggle('fast')
+  $('.search-container').toggle('fast')
 }
 
 function toggleOnClick () {
