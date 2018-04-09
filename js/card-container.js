@@ -50,7 +50,10 @@ function createFSElement() {
 }
 
 function hideFullScreen() {
-  $('#js-hide-styled').click(event => {$('.styled-itinerary').hide()})
+  $('#js-hide-styled').click(event => {
+    $('.styled-itinerary').hide()
+    $('main').show()
+  })
 }
 
 function toggleFullScreen () {
@@ -58,6 +61,7 @@ function toggleFullScreen () {
     $('.events').html(createFSElement())
     $('.itin-title').html(`<h1>${$('#title').val()}</h1>`)
     $('.styled-itinerary').show()
+    $('main').hide()
   })
 }
 

@@ -272,7 +272,7 @@ function createNewMarker(thisLat, thisLng) {
   MARKERS[MARKERS.length - 1].setLabel(`${$('.selected').data("cardIndex") + 1}`)
 }
 
-function replaceMarker() {
+function replaceMarker(thisLat, thisLng) {
   let markerIndex = $('.selected').data("markerIndex")
   let marker = new google.maps.Marker({
     position: {lat: thisLat, lng: thisLng},
