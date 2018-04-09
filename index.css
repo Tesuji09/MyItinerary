@@ -27,12 +27,23 @@ body {
 .description-container {
   display: inline-block;
   position: relative;
-  top:35%;
+  top:25%;
   background-color: rgba(175, 140, 100,0.6);
   box-shadow: 0px 0px 0px 20px white inset;
-  height: 40vh;
+  height: 60vh;
   width: 75%;
   color: black;
+}
+
+.header {
+  font-size: 25px;
+  margin-top: 60px;
+}
+
+.white-space {
+  background-color: white;
+  height: 50px;
+  position: relative;
 }
 
 .initial-location-search {
@@ -49,8 +60,8 @@ body {
   position: absolute;
   text-align: center;
   width: 100%;
-  height: 50vh;
-  top:50%;
+  height: 35vh;
+  bottom:0;
   overflow-y: scroll;
 }
 
@@ -59,14 +70,27 @@ body {
   width: 100px;
   margin: 2px;
   border-radius: 5px;
-  background-color: rgb(25, 255, 105)
+  background-color: rgb(25, 255, 105);
+  width: 50%;
 }
 
 #showFull {
   height: 25px;
   width: 100px;
   margin: 5px;
-  margin-top: 15px;
+  margin-top: 2px;
+  width: 50%;
+}
+
+.card-form {
+  box-sizing:border-box;
+  border: 2px;
+  background-color: rgba(175, 140, 100,0.9);
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  height: 15vh;
+  bottom: 35%;
 }
 
 .card {
@@ -93,7 +117,7 @@ body {
 }
 
 #title {
-  margin-top: 25px;
+  margin-top: 0px;
 }
 
 .styled-itinerary {
@@ -186,8 +210,8 @@ body {
   display: block;
   position: absolute;
   padding: 5px;
-  left: 37%;
-  top: 5%;
+  left: 10%;
+  top: 0;
 }
 
 
@@ -195,6 +219,45 @@ body {
   text-align: center;
 }
 
+@media (min-width: 360px) {
+  .white-space {
+    margin-top: 123px;
+  }
+  .header {
+    font-size: 20px;
+  }
+  .headerSubText {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 375px) {
+  .description-container {
+    height: 425px;
+    width: 350px;
+    top: 20%;
+  }
+  .header {
+    margin-top: 60px;
+  }
+
+  .white-space {
+    background-color: white;
+    height: 90px;
+    position: relative;
+    margin-top: 156px;
+  }
+
+  .location-search {
+    left: 20%;
+  }
+
+}
+@media (min-width: 768px) {
+  .location-search {
+    left: 36%;
+  }
+}
 @media (min-width: 960px){
 
   main {
@@ -205,7 +268,6 @@ body {
   }
 
   .intro-page {
-    display: none;
   	position: absolute;
     color: white;
   	width: 100%;
@@ -239,9 +301,17 @@ body {
     left: 0;
   	color: white;
   	width: 25%;
-  	height: 100vh;
-    top: 0;
+  	height: 90vh;
+    bottom: 0;
   	overflow-y: scroll;
+  }
+
+  .card-form {
+    box-sizing:border-box;
+    border: 0px;
+    width: 25%;
+    height: 10vh;
+    top: 0;
   }
 
   #showFull {
@@ -280,7 +350,7 @@ body {
     z-index: 1;
     display: block;
     position: absolute;
-    left: 43%;
+    left: 52%;
     top: 5%;
   }
 
@@ -299,6 +369,9 @@ body {
   	width: 25%;
   	height:100vh;
     top: 0;
+  }
+  .js-search {
+    margin-top: 20px;
   }
 
 }

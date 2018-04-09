@@ -21,7 +21,7 @@ function searchInitialAddress() {
 }
 
 function searchAddress() {
-  $('#submit-address').click(event => {
+  $('.location-form').submit(event => {
     event.preventDefault()
     getAddress()
   })
