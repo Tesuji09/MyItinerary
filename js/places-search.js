@@ -8,7 +8,7 @@ function renderSidebarResults (results) {
       data-id="${result.place_id}">
 				${result.name}<br>
         <input type="button" value="Show Details" class="js-show-details">
-        <input type="button" value="Add Event" class="js-add-event">
+        <input type="button" value="Add Destination" class="js-add-event">
 		<div>`)
   $('.js-search-results').html(html)
   appendSideBarResults()
@@ -18,10 +18,15 @@ function appendSideBarResults () {
   getPlaceDetails()
   $('.js-add-event').click(event => {
     event.stopPropagation()
+    if($('.card').length === 0) {
+      alert('Create an Event First!')
+      toggleSideBar()
+    } else {
     setMarker($(event.target).parent().data("lat"), $(event.target).parent().data("lng"))
     addResultAddress()
     addResultName()
     toggleSideBar()
+    }
   })
 }
 
