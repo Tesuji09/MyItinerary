@@ -147,6 +147,14 @@ body {
   background-color: rgb(232, 227, 239);
   font-size: 15px;
 }
+
+#js-hide-styled {
+  color: rgb(204, 26, 18);
+  border: none;
+  background-color: rgb(160, 139, 138);
+  border-radius: 5px;
+}
+
 .event {
   font-size: 15px;
   box-sizing: border-box;
