@@ -23,7 +23,7 @@ function showDetails(data) {
     $el.find('.details').remove()
   } else{
     $el.append(`<div class="details">
-    <a href="${data.website}">Website</a>
+    <a href="${data.website}" target="_blank">Website</a>
     <p>${data.formatted_phone_number}</p>
     <p>${data.formatted_address}</p>
     </div>`)
