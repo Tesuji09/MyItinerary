@@ -1,17 +1,22 @@
-function renderSidebarResults (results) {
+function renderSidebarResults (results, status) {
+  console.log(results)
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+      let html = results.map(result =>
+      `<div class="result" data-lat="${result.geometry.location.lat()}"
+        data-lng="${result.geometry.location.lng()}"
+        data-name="${result.name}"
+        data-address="${result.formatted_address}"
+        data-id="${result.place_id}">
+  				${result.name}<br>
+          <input type="button" value="Show Details" class="js-show-details">
+          <input type="button" value="Add Destination" class="js-add-event">
+  		<div>`)
+    $('.js-search-results').html(html)
+    appendSideBarResults()
+  } else {
+    $('.js-search-results').html(`No Results Found`)
+  }
 
-  let html = results.map(result =>
-    `<div class="result" data-lat="${result.geometry.location.lat()}"
-      data-lng="${result.geometry.location.lng()}"
-      data-name="${result.name}"
-      data-address="${result.formatted_address}"
-      data-id="${result.place_id}">
-				${result.name}<br>
-        <input type="button" value="Show Details" class="js-show-details">
-        <input type="button" value="Add Destination" class="js-add-event">
-		<div>`)
-  $('.js-search-results').html(html)
-  appendSideBarResults()
 }
 
 function appendSideBarResults () {
@@ -39,6 +44,7 @@ function getLng() {
 }
 
 function addResultAddress () {
+  console.log($(event.target).parent().data('address'))
     $('.selected .address').val(`${$(event.target).parent().data('address')}`)
 }
 

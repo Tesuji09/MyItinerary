@@ -238,8 +238,8 @@ function showDetails(data) {
     $el.find('.details').remove()
   } else{
     $el.append(`<div class="details">
-    <a href="${data.website}" target="_blank">Website</a>
-    <p>${data.formatted_phone_number}</p>
+    ${data.website !== undefined ? `<a href="${data.website}" target="_blank">Website</a>`: `No Website Available <br>`}
+    ${data.formatted_phone_number !== undefined ? `<p>${data.formatted_phone_number}</p>`: `No Phone Number Available`}
     <p>${data.formatted_address}</p>
     </div>`)
     $el.find('.js-show-details').attr("value", "Hide Details")
@@ -249,7 +249,8 @@ function showDetails(data) {
 function getGetGooglePlacesData (searchQuery, callback) {
   const query = {
     location: LOCATION,
-    radius: '500',
+    // radius: 20000,
+    rankBy: google.maps.places.RankBy.DISTANCE,
     query: `${searchQuery}`
   }
   SERVICE.textSearch(query, callback)

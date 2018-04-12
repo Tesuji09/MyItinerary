@@ -11,7 +11,7 @@
 		<div class='intro-page'>
 			<div class='description-container'>
 				<h1 class="header">Let's make an Itinerary!</h1>
-				<p class="headerSubText"> Begin by choosing an area to search:</p>
+				<p class="headerSubText"> Begin by entering a city to search in:</p>
 				<div class="initial-location-search">
 	        <form class="location-form">
 	          <input id="initial-address" type="text" placeholder="Enter an Address, City etc.." aria-label="Enter a Location">
@@ -26,9 +26,9 @@
         <div class="card-form">
           <input type="button" value="Create Destination" id="create"><br>
           <input type="button" value="Printable Version" id="showFull"><br>
-          <label for="title">Title: </label><input type="text" id="title" placeholder="Name your itinerary" >
         </div>
         <div class="card-container">
+            <label for="title">Title: </label><input type="text" id="title" placeholder="Name your itinerary" >
             <div class="cards-list" aria-live="assertive"></div>
 				</div>
       <div class="location-search">
@@ -43,6 +43,10 @@
 					<label>Places of Interest<br><input type="text" class="js-query" placeholder="Enter Keyword"></label>
 					<input type="submit" value="Submit">
 				</form>
+        <p><strong>*Please note:</strong> If you are trying to enter a geographical location (e.g. chicago, china, etc...)
+          or an ethnicity (e.g. chinese, indian, etc...) as a keyword you must also include another word to identify the type
+          of place that you would like to search. e.g. "chinese <em>food</em>" or "japanese <em>temple</em>"
+        </p>
 				<div class="js-search-results" aria-live="assertive">
 				</div>
 			</div>
