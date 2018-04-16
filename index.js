@@ -16,15 +16,15 @@ let SERVICE
 // This section will be for handling the map
 
 // function getLat() {
-// 	navigator.geolocation.getCurrentPosition(position => {
-// 		return position.coords.latitude;
-// 	});
+//   navigator.geolocation.getCurrentPosition(position => {
+//     return position.coords.latitude;
+//   });
 // }
 
 // function getLng() {
-// 	navigator.geolocation.getCurrentPosition(position => {
-// 		return position.coords.longitude;
-// 	});
+//   navigator.geolocation.getCurrentPosition(position => {
+//     return position.coords.longitude;
+//   });
 // }
 
 
