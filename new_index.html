@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name ="viewport" content="width=device-width, initial-scale=1">
+  <title>MyItinerary</title>
+  <!-- <link rel='stylesheet' href='index.css'> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
+</head>
+<body>
+    <div class='intro-page container-fluid'>
+      <div class='row'>
+        <div class='description-container col-12'>
+          <h1 class="header">Welcome to myItinerary!</h1>
+          <p class="headerSubText"> myIntinery is an web app that allows you to create a printable itinerary through simple search in any given location</p>
+          <ul>
+            <li>Begin by entering a city you would like search in (you can change the location any time using the Search bar on the map)</li>
+            <li>Then go ahead and add in a title</li>
+            <li>
+          </ul>
+          <div class="initial-location-search">
+            <form class="location-form">
+              <input id="initial-address" type="text" placeholder="Enter a City" aria-label="Enter a Location">
+              <input id="js-submit-initial-address" type="submit" value="Search">
+            </form>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <main role="main">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-3">
+              <input type="image" src="icons/Navigation.png" class="showCC" alt="Show Places Search">
+              <div class="card-form">
+                <input type="button" value="Create Destination" id="create"><br>
+                <input type="button" value="Printable Version" id="showFull"><br>
+              </div>
+              <div class="card-container">
+                  <label for="title">Title: </label><input type="text" id="title" placeholder="Name your itinerary" >
+                  <div class="cards-list" aria-live="assertive"></div>
+              </div>
+            </div>
+          </div>
+        <div class="location-search">
+          <form class="location-form">
+            <input class="js-address" type="text" placeholder="Enter Address, City etc.." aria-label="Enter a Location">
+            <input id="submit-address" type="submit" value="Search">
+          </form>
+        </div>
+        <div id="map"></div>
+        <div class="search-container">
+          <form class="js-search">
+            <label>Places of Interest<br><input type="text" class="js-query" placeholder="Enter Keyword"></label>
+            <input type="submit" value="Submit">
+          </form>
+          <p><strong>*Please note:</strong> If you are trying to enter a geographical location (e.g. chicago, china, etc...)
+            or an ethnicity (e.g. chinese, indian, etc...) as a keyword you must also include another word to identify the type
+            of place that you would like to search. e.g. "chinese <em>food</em>" or "japanese <em>temple</em>"
+          </p>
+          <div class="js-search-results" aria-live="assertive">
+          </div>
+        </div>
+      </div>
+    </main>
+    <div class="styled-itinerary">
+      <div class="itin-title">
+      </div>
+      <div class="events">
+      </div>
+      <div class="footer">
+        <input id="js-hide-styled" type="button" value="Close">
+      </div>
+    </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="js/google-maps-api.js"></script>
+  <script type="text/javascript" src="js/places-search.js"></script>
+  <script type="text/javascript" src="js/search-address.js"></script>
+  <script type="text/javascript" src="js/card-container.js"></script>
+  <script type="text/javascript" src="index.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiaXqZk9Y14jYBALFPyT_qjC8tAErrisg&callback=initMap&libraries=places" async defer></script>
+</body>
+</html>
