@@ -4,10 +4,10 @@ function createCard () {
     $('.cards-list').append(`<div class="card selected">
       <form>
         <label>Location: <input class="location" type="text" placeholder="Location"></label><br>
-				<label>Address: <input class="address" type="text" placeholder="Address"></label><br>
-				<label>Time: <input class="beginTime" type="time"></label><br>
-				<label>Notes<textarea class='notes' aria-label="Notes"></textarea></label><br>
-				<input type="button" value="Remove Card" class="delete">
+        <label>Address: <input class="address" type="text" placeholder="Address"></label><br>
+        <label>Time: <input class="beginTime" type="time"></label><br>
+        <label>Notes<textarea class='notes' aria-label="Notes"></textarea></label><br>
+        <input type="button" value="Remove Card" class="delete">
       <form>
         </div>`)
     setCardIndex()

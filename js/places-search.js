@@ -7,10 +7,10 @@ function renderSidebarResults (results, status) {
         data-name="${result.name}"
         data-address="${result.formatted_address}"
         data-id="${result.place_id}">
-  				${result.name}<br>
+          ${result.name}<br>
           <input type="button" value="Show Details" class="js-show-details">
           <input type="button" value="Add Destination" class="js-add-event">
-  		<div>`)
+      <div>`)
     $('.js-search-results').html(html)
     appendSideBarResults()
   } else {

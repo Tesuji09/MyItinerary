@@ -272,16 +272,16 @@ body {
       box-sizing: border-box;
       margin:0;
       padding: 0;
-  		width: 100%;
+      width: 100%;
   }
 
   .intro-page {
-  	position: absolute;
+    position: absolute;
     color: white;
-  	width: 100%;
-  	height: 100vh;
-  	background-color: rgba(0, 0, 255, .9);
-  	text-align: center;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 255, .9);
+    text-align: center;
   }
 
   .description-container {
@@ -307,11 +307,11 @@ body {
   .card-container {
     display: block;
     left: 0;
-  	color: white;
-  	width: 25%;
-  	height: 90vh;
+    color: white;
+    width: 25%;
+    height: 90vh;
     bottom: 0;
-  	overflow-y: scroll;
+    overflow-y: scroll;
   }
 
   .card-form {
@@ -338,10 +338,10 @@ body {
   }
 
   .notes {
-  	display: block;
-  	margin: 0 auto;
-  	width: 90%;
-  	height: 50px;
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+    height: 50px;
   }
 
 
@@ -374,8 +374,8 @@ body {
     display: none;
     border: solid black;
     left:0;
-  	width: 25%;
-  	height:100vh;
+    width: 25%;
+    height:100vh;
     top: 0;
   }
   .js-search {
