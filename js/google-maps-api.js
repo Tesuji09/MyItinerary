@@ -249,8 +249,8 @@ function showDetails(data) {
 function getGetGooglePlacesData (searchQuery, callback) {
   const query = {
     location: LOCATION,
-    // radius: 20000,
-    rankBy: google.maps.places.RankBy.DISTANCE,
+    radius: 20000,
+    //rankBy: google.maps.places.RankBy.DISTANCE,
     query: `${searchQuery}`
   }
   SERVICE.textSearch(query, callback)

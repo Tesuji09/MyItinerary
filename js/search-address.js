@@ -16,7 +16,8 @@ function searchInitialAddress() {
     event.preventDefault()
     $('.js-address').val($('#initial-address').val())
     getAddress()
-    $('.intro-page').fadeOut(100)
+    $('.intro-page').remove()
+    $('main').show()
   })
 }
 

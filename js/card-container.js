@@ -24,7 +24,7 @@ function setCardIndex(){
 }
 
 function toBottom() {
-  $('.card-container').animate({
+  $('.card-c').animate({
    scrollTop: $('.cards-list').height() + $('.card-form').height()},
    'fast')
 }

@@ -3,52 +3,60 @@
 <head>
   <meta name ="viewport" content="width=device-width, initial-scale=1">
   <title>MyItinerary</title>
-  <!-- <link rel='stylesheet' href='index.css'> -->
+  <link rel='stylesheet' href='index.css'>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
 </head>
-<body>
-    <div class='intro-page container-fluid'>
+<body id="overrides">
+    <div class='intro-page container-fluid d-flex justify-content-center'>
       <div class='row'>
-        <div class='description-container col-12'>
-          <h1 class="header">Welcome to myItinerary!</h1>
-          <p class="headerSubText"> myIntinery is an web app that allows you to create a printable itinerary through simple search in any given location</p>
-          <ul>
-            <li>Begin by entering a city you would like search in (you can change the location any time using the Search bar on the map)</li>
-            <li>Then go ahead and add in a title</li>
-            <li>
-          </ul>
+        <div class='col-xs-6'>
+          <div class='jumbotron  text-body'>
+            <p class="header display-2 mt-0">Welcome to myItinerary!</h1>
+            <p class="headerSubText h4"> myIntinery is a web app that allows you to create a printable itinerary through simple searchs</p>
+            <ol class="instructions">
+              <li>Begin by entering a city below</li>
+              <li>Create a title for your itinerary</li>
+              <li>Use the green button to create a destination</li>
+              <li>Then enter a keyword to search</li>
+              <li>Choose your destination by clicking on the "Add Destination" button</li>
+              <li>Let's begin!</li>
+            </ol>
           <div class="initial-location-search">
             <form class="location-form">
-              <input id="initial-address" type="text" placeholder="Enter a City" aria-label="Enter a Location">
-              <input id="js-submit-initial-address" type="submit" value="Search">
+              <input id="initial-address"  type="text" placeholder="Enter a City" aria-label="Enter a Location">
+              <input id="js-submit-initial-address" class="btn btn-primary" type="submit" value="Search">
             </form>
-           </div>
+          </div>
           </div>
         </div>
       </div>
     </div>
     <main role="main">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-lg-3">
-              <input type="image" src="icons/Navigation.png" class="showCC" alt="Show Places Search">
+        <input type="image" src="icons/Navigation.png" class="showCC" alt="Show Places Search">
+        <div class="container-fluid ccdd">
+          <div class="row no-pad">
+            <div class="card-bar col-sm-3 mh-100 bg-primary">
               <div class="card-form">
                 <input type="button" value="Create Destination" id="create"><br>
                 <input type="button" value="Printable Version" id="showFull"><br>
               </div>
-              <div class="card-container">
+              <div class="card-c">
                   <label for="title">Title: </label><input type="text" id="title" placeholder="Name your itinerary" >
                   <div class="cards-list" aria-live="assertive"></div>
               </div>
             </div>
           </div>
-        <div class="location-search">
-          <form class="location-form">
-            <input class="js-address" type="text" placeholder="Enter Address, City etc.." aria-label="Enter a Location">
-            <input id="submit-address" type="submit" value="Search">
-          </form>
+        <div class="container-fluid">
+          <div class="row no-pad">
+            <div class="location-search">
+              <form class="location-form">
+                <input class="js-address" type="text" placeholder="Enter Address, City etc.." aria-label="Enter a Location">
+                <input id="submit-address" type="submit" value="Search">
+              </form>
+            </div>
+          </div>
         </div>
         <div id="map"></div>
         <div class="search-container">

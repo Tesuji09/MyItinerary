@@ -13,59 +13,61 @@ body {
   top: 0;
 }
 
-.intro-page {
-  z-index: 3;
+#overrides .intro-page {
   position: absolute;
   width:100%;
   height:100vh;
   background-image: url(imgs/Intro.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  text-align: center;
+  text-align: left;
 }
 
-.description-container {
-  display: inline-block;
-  position: relative;
-  top:25%;
-  background-color: rgba(175, 140, 100,0.6);
-  box-shadow: 0px 0px 0px 20px white inset;
+.instructions {
+  list-style-type: decimal;
+}
+
+#overrides .jumbotron {
+  /* position: relative;
+  top:25%; */
+  background-color: rgba(175, 140, 100,0.8);
+  font-size: 2.5vw;
+  /* box-shadow: 0px 0px 0px 20px white inset;
   height: 60vh;
   width: 75%;
-  color: black;
+  color: black; */
 }
 
 .header {
-  font-size: 25px;
-  margin-top: 60px;
+  text-align:center;
+  /* font-size: 25px;
+  margin-top: 60px; */
 }
 
-.white-space {
-  background-color: white;
-  height: 50px;
-  position: relative;
-}
-
-.initial-location-search {
+/* .initial-location-search {
   display: block;
   margin: 0 auto;
   width: inherit;
 
+} */
+
+#overrides main {
+  display: none;
+
 }
 
-.card-container {
-  box-sizing:border-box;
-  border: 2px;
-  background-color: rgba(175, 140, 100,0.9);
-  position: absolute;
-  text-align: center;
+ #overrides .card-bar {
+   text-align: center;
+  /* border: 2px; */
+  /* background-color: rgba(175, 140, 100,0.9); */
+  /* text-align: center;
   width: 100%;
   height: 35vh;
-  bottom:0;
+  bottom:0;*/
   overflow-y: scroll;
 }
 
-#create {
+/* #create {
   height: 25px;
   width: 100px;
   margin: 2px;
@@ -102,23 +104,23 @@ body {
 .delete {
   display: block;
   margin: 0 auto;
-}
+} */
 
 .selected {
   border: 5px grey inset;
   background-color: rgba(107, 195, 239, 0.8);
 }
 
-.notes {
+/* .notes {
   display: block;
   margin: 0 auto;
   width: 90%;
   height: 50px;
-}
+} */
 
-#title {
+/* #title {
   margin-top: 0px;
-}
+} */
 
 .styled-itinerary {
     display: none;
@@ -205,7 +207,7 @@ body {
   border-radius: 5px;
 }
 
-.showCC {
+#overrides .showCC {
   position: absolute;
   top: 50%;
   z-index: 2;
@@ -227,48 +229,12 @@ body {
   text-align: center;
 }
 
-@media (min-width: 360px) {
-  .white-space {
-    margin-top: 123px;
-  }
-  .header {
-    font-size: 20px;
-  }
-  .headerSubText {
-    font-size: 14px;
-  }
-}
 
-@media (min-width: 375px) {
-  .description-container {
-    height: 425px;
-    width: 350px;
-    top: 20%;
-  }
-  .header {
-    margin-top: 60px;
-  }
 
-  .white-space {
-    background-color: white;
-    height: 90px;
-    position: relative;
-    margin-top: 156px;
-  }
-
-  .location-search {
-    left: 20%;
-  }
-
-}
-@media (min-width: 768px) {
-  .location-search {
-    left: 36%;
-  }
-}
 @media (min-width: 960px){
 
   main {
+      display: none;
       box-sizing: border-box;
       margin:0;
       padding: 0;
@@ -284,6 +250,10 @@ body {
     text-align: center;
   }
 
+  .jumbotron {
+    margin-top: 12%;
+  }
+
   .description-container {
     height: 425px;
     width: 350px;
@@ -292,28 +262,20 @@ body {
   }
 
   .header {
-    margin-top: 50px;
-    font-size: 30px;
+    margin-bottom: 50px;
   }
 
-  .white-space {
-    background-color: white;
-    height: 90px;
-    position: relative;
-    margin-top: 155px;
-  }
 
     /* section for card */
-  .card-container {
-    display: block;
-    left: 0;
+ #overrides .card-c {
     color: white;
-    width: 25%;
-    height: 90vh;
-    bottom: 0;
+    max-height: 100%;
     overflow-y: scroll;
   }
-
+#overrides .card-bar {
+  height: 100vh;
+}
+/*
   .card-form {
     box-sizing:border-box;
     border: 0px;
@@ -330,19 +292,19 @@ body {
   #create {
     width: 50%;
     left: 4.4%;
-  }
+  } */
 
-  .showCC {
+  #overrides .showCC {
     position: absolute;
     top: 0;
   }
-
+/*
   .notes {
     display: block;
     margin: 0 auto;
     width: 90%;
     height: 50px;
-  }
+  } */
 
 
 
