@@ -11,10 +11,10 @@
 <body id="overrides">
     <div class='intro-page container-fluid d-flex justify-content-center'>
       <div class='row'>
-        <div class='col-xs-6'>
-          <div class='jumbotron  text-body'>
-            <p class="header display-2 mt-0">Welcome to myItinerary!</h1>
-            <p class="headerSubText h4"> myIntinery is a web app that allows you to create a printable itinerary through simple searchs</p>
+        <div class='col-10'>
+          <div class='jumbotron shadow-lg text-body'>
+            <p class="header mt-0">Welcome to myItinerary!</h1>
+            <p class="headerSubText"> myIntinery is a web app that allows you to create a printable itinerary through simple searchs</p>
             <ol class="instructions">
               <li>Begin by entering a city below</li>
               <li>Create a title for your itinerary</li>
@@ -34,10 +34,12 @@
       </div>
     </div>
     <main role="main">
-        <input type="image" src="icons/Navigation.png" class="showCC" alt="Show Places Search">
-        <div class="container-fluid ccdd">
+      <div class="map-container-fluid">
+        <input type="image" src="icons/loupe.png" class="showCC" alt="Show Places Search">
           <div class="row no-pad">
-            <div class="card-bar col-sm-3 mh-100 bg-primary">
+              <div id="map" class="map col-12 col-xl-8">
+              </div>
+              <div class="card-bar col-lg-4 col-12 ">
               <div class="card-form">
                 <input type="button" value="Create Destination" id="create"><br>
                 <input type="button" value="Printable Version" id="showFull"><br>
@@ -48,8 +50,9 @@
               </div>
             </div>
           </div>
-        <div class="container-fluid">
-          <div class="row no-pad">
+        </div>
+        <div class="container-fluid no-pad">
+          <div class="row">
             <div class="location-search">
               <form class="location-form">
                 <input class="js-address" type="text" placeholder="Enter Address, City etc.." aria-label="Enter a Location">
@@ -58,7 +61,6 @@
             </div>
           </div>
         </div>
-        <div id="map"></div>
         <div class="search-container">
           <form class="js-search">
             <label>Places of Interest<br><input type="text" class="js-query" placeholder="Enter Keyword"></label>
