@@ -6,7 +6,7 @@ function createCard () {
         <label>Location: <input class="location" type="text" placeholder="Location"></label><br>
         <label>Address: <input class="address" type="text" placeholder="Address"></label><br>
         <label>Time: <input class="beginTime" type="time"></label><br>
-        <label>Notes <br><textarea class='notes w-100' aria-label="Notes"></textarea></label><br>
+        <label>Notes <br><textarea class="notes w-100" aria-label="Notes"></textarea></label><br>
         <input type="button" value="Remove Card" class="delete">
       <form>
         </div>`)
@@ -29,11 +29,11 @@ function toBottom() {
    'fast')
 }
 function showSearchContainer () {
-  $('.search-container').show()
+  $('.search-c').show()
 }
 
 function hideSearchContainer() {
-  $('.searchContainer').hide()
+  $('.search-c').hide()
 }
 
 function createFSElement() {
@@ -101,7 +101,7 @@ function renameMarkers() {
 }
 
 function toggleSideBar() {
-  $('.search-container').toggle('fast')
+  $('.search-c').toggle('fast')
 }
 
 function toggleOnClick () {

@@ -33,46 +33,39 @@
         </div>
       </div>
     </div>
-    <main role="main">
-      <div class="map-container-fluid">
-        <input type="image" src="icons/loupe.png" class="showCC" alt="Show Places Search">
-          <div class="row no-pad">
-              <div id="map" class="map col-12 col-xl-8">
-              </div>
-              <div class="card-bar col-lg-4 col-12 ">
+    <main role="main" aria-live="assertive">
+      <div class="container-fluid">
+        <input type="image" src="icons/loupe.png" class="showCC btn-primary" aria-label="Places Search Button" alt="Show Places Search button">
+        <div class="row no-pad d-flex flex-row-reverse">
+            <div id="map" class="map col-12 col-xl-8"></div>
+            <div class="card-bar col-lg-4 col-12">
               <div class="card-form">
                 <input type="button" value="Create Destination" id="create"><br>
                 <input type="button" value="Printable Version" id="showFull"><br>
               </div>
-              <div class="card-c">
-                  <label for="title">Title: </label><input type="text" id="title" placeholder="Name your itinerary" >
-                  <div class="cards-list" aria-live="assertive"></div>
-              </div>
+            <div class="card-c" data-simplebar>
+                <label for="title">Title: </label><input type="text" id="title" placeholder="Name your itinerary" >
+                <div class="cards-list" aria-live="assertive"></div>
             </div>
           </div>
-        </div>
-        <div class="container-fluid no-pad">
-          <div class="row">
-            <div class="location-search">
-              <form class="location-form">
-                <input class="js-address" type="text" placeholder="Enter Address, City etc.." aria-label="Enter a Location">
-                <input id="submit-address" type="submit" value="Search">
-              </form>
+          <div class="search-c col-lg-4 col-12">
+            <form class="js-search">
+              <label>Places of Interest<br><input type="text" class="js-query" placeholder="Enter Keyword"></label>
+              <input type="submit" value="Submit">
+            </form>
+            <p><strong>*Please note:</strong> If you are trying to enter a geographical location (e.g. chicago, china, etc...)
+              or an ethnicity (e.g. chinese, indian, etc...) as a keyword you must also include another word to identify the type
+              of place that you would like to search. e.g. "chinese <em>food</em>" or "japanese <em>temple</em>"
+            </p>
+            <div class="js-search-results" aria-live="assertive">
             </div>
-          </div>
         </div>
-        <div class="search-container">
-          <form class="js-search">
-            <label>Places of Interest<br><input type="text" class="js-query" placeholder="Enter Keyword"></label>
-            <input type="submit" value="Submit">
-          </form>
-          <p><strong>*Please note:</strong> If you are trying to enter a geographical location (e.g. chicago, china, etc...)
-            or an ethnicity (e.g. chinese, indian, etc...) as a keyword you must also include another word to identify the type
-            of place that you would like to search. e.g. "chinese <em>food</em>" or "japanese <em>temple</em>"
-          </p>
-          <div class="js-search-results" aria-live="assertive">
-          </div>
-        </div>
+      </div>
+      <div class="location-search">
+        <form class="location-form">
+          <input class="js-address" type="text" placeholder="Enter Address, City etc.." aria-label="Enter a Location">
+          <input id="submit-address" type="submit" value="Search">
+        </form>
       </div>
     </main>
     <div class="styled-itinerary">
