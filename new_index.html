@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
 </head>
-<body id="overrides">
+<body>
     <div class="intro-page">
       <div class="container-fluid d-flex justify-content-center">
         <div class="row no-gutters">
@@ -43,18 +43,21 @@
             <div id="map" class="map"></div>
           </div>
           <div class="col-lg-4 col-12">
-            <section class="card-bar" role="application">
-              <div class="card-form">
-                <fieldset>
-                  <input type="button" value="Create Destination" id="create" class="create"><br>
-                  <input type="button" value="Printable Version" id="showFull"><br>
-                </fieldset>
+            <div class="card-bar">
+              <section role="application">
+                <div class="card-form">
+                  <fieldset>
+                    <legend class="cd">Create Destination</legend>
+                    <input type="button" value="Create Destination" id="create" class="create"><br>
+                    <input type="button" value="Printable Version" id="showFull"><br>
+                    <label for="title">Title: </label> <input type="text" id="title" placeholder="Name your itinerary" >
+                  </fieldset>
+                </section>
               </div>
               <div class="card-c">
-                <label for="title">Title: </label> <input type="text" id="title" placeholder="Name your itinerary" >
-                <div class="cards-list" aria-live="assertive"></div>
+                <section role="log" class="cards-list" aria-live="assertive"></section>
               </div>
-            </section> <!-- card-bar -->
+            </div> <!-- card-bar -->
           </div><!-- col-lg-4 col-12 -->
         </div><!-- .row -->
       </div> <!-- .container-fluid -->
@@ -81,19 +84,21 @@
         <div class="row no-gutters">
           <div class="col-lg-4 col-12">
             <div class="search-c">
-              <form class="js-search">
-                <fieldset>
-                  <legend> Places of Interest: </legend>
-                  <input type="text" class="js-query" placeholder="Enter Keyword" aria-label="Enter Search Keyword">
-                  <input type="submit" value="Submit">
-                </fieldset>
-              </form>
+              <section role="application">
+                <form class="js-search">
+                  <fieldset>
+                    <legend> Places of Interest: </legend>
+                    <input type="text" class="js-query" placeholder="Enter Keyword" aria-label="Enter Search Keyword">
+                    <input type="submit" value="Submit">
+                  </fieldset>
+                </form>
+              </section>
               <p>
                 <strong>*Please note:</strong> If you are trying to enter a geographical location (e.g. chicago, china, etc...)
                 or an ethnicity (e.g. chinese, indian, etc...) as a keyword you must also include another word to identify the type
                 of place that you would like to search. e.g. "chinese <em>food</em>" or "japanese <em>temple</em>"
               </p>
-              <div class="js-search-results" aria-live="assertive"></div>
+              <section role="log" class="js-search-results" aria-live="assertive"></section>
             </div><!-- .search-c -->
           </div><!-- .col-lg-4 -->
         </div><!-- .row no-pad -->

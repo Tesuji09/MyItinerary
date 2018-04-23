@@ -58,13 +58,20 @@ body > .main {
   background-color: rgb(25, 255, 105);
 }
 
+.cd {
+  text-indent: -99999px;
+  margin: 0;
+  padding: 0;
+  height: 0;
+}
+
 
 .cards-list > .card {
   border: 2px solid black;
   background-color: rgba(175, 140, 100,0.9);
 }
 
-#overrides .selected {
+.cards-list > .selected {
   border: 5px grey inset;
   background-color: rgba(107, 195, 239, 0.8);
 }
