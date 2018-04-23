@@ -251,7 +251,7 @@ function getGetGooglePlacesData (searchQuery, callback) {
     location: LOCATION,
     radius: 20000,
     //rankBy: google.maps.places.RankBy.DISTANCE,
-    query: `${searchQuery}`
+    query: searchQuery
   }
   SERVICE.textSearch(query, callback)
 }

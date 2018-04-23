@@ -9,62 +9,61 @@
   <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
 </head>
 <body id="overrides">
-    <div class='intro-page container-fluid d-flex justify-content-center'>
-      <div class='row'>
-        <div class='col-10'>
-          <div class='jumbotron shadow-lg text-body'>
-            <p class="header mt-0">Welcome to myItinerary!</h1>
-            <p class="headerSubText"> myIntinery is a web app that allows you to create a printable itinerary through simple searchs</p>
-            <ol class="instructions">
-              <li>Begin by entering a city below</li>
-              <li>Create a title for your itinerary</li>
-              <li>Use the green button to create a destination</li>
-              <li>Then enter a keyword to search</li>
-              <li>Choose your destination by clicking on the "Add Destination" button</li>
-              <li>Let's begin!</li>
-            </ol>
-          <div class="initial-location-search">
-            <form class="location-form">
-              <input id="initial-address"  type="text" placeholder="Enter a City" aria-label="Enter a Location">
-              <input id="js-submit-initial-address" class="btn btn-primary" type="submit" value="Search">
-            </form>
-          </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <main role="main" aria-live="assertive">
-      <div class="container-fluid">
-        <input type="image" src="icons/loupe.png" class="showCC btn-primary" aria-label="Places Search Button" alt="Show Places Search button">
-        <div class="row no-pad d-flex flex-row-reverse">
-            <div id="map" class="map col-12 col-xl-8"></div>
-            <div class="card-bar col-lg-4 col-12">
-              <div class="card-form">
-                <input type="button" value="Create Destination" id="create"><br>
-                <input type="button" value="Printable Version" id="showFull"><br>
+    <div class="intro-page">
+      <div class="container-fluid d-flex justify-content-center">
+        <div class="row no-gutters">
+          <div class="col-10">
+            <div class="jumbotron shadow-lg text-white">
+              <p class="header mt-0">Welcome to myItinerary!</h1>
+              <p class="headerSubText"> myIntinery allows you to search for locations and then add them to a printable Itinerary!</p>
+              <ol class="instructions">
+                <li>Begin by entering a city below</li>
+                <li>Create a title for your itinerary</li>
+                <li>Use the green button to create a destination</li>
+                <li>Then enter a keyword to search</li>
+                <li>Choose your destination by clicking on the "Add Destination" button</li>
+                <li>Let's begin!</li>
+              </ol>
+              <div class="initial-location-search">
+                <form class="location-form">
+                  <input id="initial-address"  type="text" placeholder="Enter a City" aria-label="Enter a Location">
+                  <input id="js-submit-initial-address" class="btn btn-primary" type="submit" value="Search">
+                </form>
               </div>
-            <div class="card-c" data-simplebar>
-                <label for="title">Title: </label><input type="text" id="title" placeholder="Name your itinerary" >
-                <div class="cards-list" aria-live="assertive"></div>
-            </div>
+            </div> <!-- .jumbotron -->
+          </div> <!-- .col -->
+        </div> <!-- .row -->
+      </div> <!-- .container-fluid -->
+    </div> <!-- .intro-page -->
+    <main role="main" class="main" aria-live="assertive">
+      <input type="image" src="icons/loupe.png" class="showCC btn-primary" aria-label="Places Search Button" alt="Show Places Search button">
+      <div class="container-fluid">
+        <div class="row no-gutters d-flex flex-row-reverse">
+          <div class="col-12 col-xl-8">
+            <div id="map" class="map"></div>
           </div>
-          <div class="search-c col-lg-4 col-12">
-            <form class="js-search">
-              <label>Places of Interest<br><input type="text" class="js-query" placeholder="Enter Keyword"></label>
-              <input type="submit" value="Submit">
-            </form>
-            <p><strong>*Please note:</strong> If you are trying to enter a geographical location (e.g. chicago, china, etc...)
-              or an ethnicity (e.g. chinese, indian, etc...) as a keyword you must also include another word to identify the type
-              of place that you would like to search. e.g. "chinese <em>food</em>" or "japanese <em>temple</em>"
-            </p>
-            <div class="js-search-results" aria-live="assertive">
-            </div>
-        </div>
-      </div>
+          <div class="col-lg-4 col-12">
+            <section class="card-bar" role="application">
+              <div class="card-form">
+                <fieldset>
+                  <input type="button" value="Create Destination" id="create" class="create"><br>
+                  <input type="button" value="Printable Version" id="showFull"><br>
+                </fieldset>
+              </div>
+              <div class="card-c">
+                <label for="title">Title: </label> <input type="text" id="title" placeholder="Name your itinerary" >
+                <div class="cards-list" aria-live="assertive"></div>
+              </div>
+            </section> <!-- card-bar -->
+          </div><!-- col-lg-4 col-12 -->
+        </div><!-- .row -->
+      </div> <!-- .container-fluid -->
       <div class="location-search">
         <form class="location-form">
-          <input class="js-address" type="text" placeholder="Enter Address, City etc.." aria-label="Enter a Location">
-          <input id="submit-address" type="submit" value="Search">
+          <fieldset>
+            <input class="js-address" type="text" placeholder="Enter Address, City etc.." aria-label="Enter a Location">
+            <input id="submit-address" type="submit" value="Search">
+          </fieldset>
         </form>
       </div>
     </main>
@@ -73,10 +72,33 @@
       </div>
       <div class="events">
       </div>
-      <div class="footer">
-        <input id="js-hide-styled" type="button" value="Close">
-      </div>
+      <footer class="footer">
+        <input id="js-hide-styled" class="hide-styled" type="button" value="Close">
+      </footer>
     </div>
+    <section class="search-wrapper" role="application">
+      <div class="container-fluid">
+        <div class="row no-gutters">
+          <div class="col-lg-4 col-12">
+            <div class="search-c">
+              <form class="js-search">
+                <fieldset>
+                  <legend> Places of Interest: </legend>
+                  <input type="text" class="js-query" placeholder="Enter Keyword" aria-label="Enter Search Keyword">
+                  <input type="submit" value="Submit">
+                </fieldset>
+              </form>
+              <p>
+                <strong>*Please note:</strong> If you are trying to enter a geographical location (e.g. chicago, china, etc...)
+                or an ethnicity (e.g. chinese, indian, etc...) as a keyword you must also include another word to identify the type
+                of place that you would like to search. e.g. "chinese <em>food</em>" or "japanese <em>temple</em>"
+              </p>
+              <div class="js-search-results" aria-live="assertive"></div>
+            </div><!-- .search-c -->
+          </div><!-- .col-lg-4 -->
+        </div><!-- .row no-pad -->
+      </div><!-- .container-fluid -->
+    </section><!-- .search-wrapper -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
