@@ -25,3 +25,4 @@ Places search sidebar:
 * CSS
 * jQuery
 * JavaScript
+* Bootstrap
