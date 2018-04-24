@@ -205,7 +205,7 @@ body > .main {
   text-align: center;
 }
 
-@media (min-width: 960px){
+@media (min-width: 1200px){
   .main {
       display: none;
   }
@@ -233,7 +233,7 @@ body > .main {
   }
 
 
-  .col-lg-4 > .card-bar {
+  .col-xl-4 > .card-bar {
   height: 100vh;
 }
 
